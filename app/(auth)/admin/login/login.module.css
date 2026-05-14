@@ -1,0 +1,125 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--paper);
+}
+.box {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 48px;
+  border-radius: 4px;
+  box-shadow: var(--shadow-lift);
+  border: 1px solid var(--line);
+}
+.brandMark {
+  width: 32px;
+  height: 32px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 28px;
+}
+.brandMark::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  background: white;
+  border-radius: 50%;
+}
+.brandMark::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  z-index: 1;
+}
+.title {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.title em {
+  font-style: italic;
+  color: var(--terracotta-deep);
+}
+.subtitle {
+  font-size: 13px;
+  color: rgba(26, 22, 18, 0.55);
+  margin-bottom: 32px;
+}
+.error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.field label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(26, 22, 18, 0.55);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.field input {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid var(--line-strong);
+  background: transparent;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--ink);
+}
+.field input:focus {
+  outline: none;
+  border-bottom-color: var(--terracotta);
+}
+.btn {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+  transition: all 0.25s;
+}
+.btn:hover {
+  background: var(--terracotta);
+}
+.btn svg {
+  width: 14px;
+  height: 14px;
+}
+.hint {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: rgba(26, 22, 18, 0.5);
+  line-height: 1.5;
+}

@@ -1,0 +1,213 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 28px 48px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.brandMark {
+  width: 32px;
+  height: 32px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  position: relative;
+}
+.brandMark::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  background: var(--paper);
+  border-radius: 50%;
+}
+.brandMark::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.headerMeta {
+  font-size: 13px;
+  color: rgba(26, 22, 18, 0.55);
+  letter-spacing: 0.02em;
+}
+.headerMeta strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.hero {
+  flex: 1;
+  position: relative;
+  padding: 100px 48px 80px;
+  overflow: hidden;
+}
+
+.heroGrid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: end;
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--terracotta);
+}
+
+.title {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(48px, 6.5vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--terracotta-deep);
+}
+
+.lede {
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(26, 22, 18, 0.7);
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 18px 36px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.25s;
+}
+.ctaPrimary:hover {
+  background: var(--terracotta);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+.ctaPrimary svg {
+  width: 14px;
+  height: 14px;
+}
+
+.heroMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-bottom: 8px;
+}
+
+.metaRow {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.metaRow:first-child {
+  padding-top: 0;
+}
+
+.metaLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(26, 22, 18, 0.5);
+  min-width: 80px;
+}
+
+.metaValue {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.decor {
+  position: absolute;
+  top: -10%;
+  right: -8%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle at 30% 30%, var(--ochre), transparent 65%);
+  opacity: 0.15;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(20px);
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(26, 22, 18, 0.5);
+}
+.footer a {
+  color: var(--terracotta);
+}
+
+@media (max-width: 900px) {
+  .header,
+  .hero,
+  .footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
