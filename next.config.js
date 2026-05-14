@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   typescript: {
     // Ignore les erreurs de typage TS pendant le build production
-    // Le code fonctionne, c'est juste TS qui est strict
+    // Le code fonctionne en runtime, c'est juste TS qui est strict
     ignoreBuildErrors: true,
   },
   eslint: {
