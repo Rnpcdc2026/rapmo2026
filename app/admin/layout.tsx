@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import styles from './admin.module.css';
@@ -20,19 +21,23 @@ export default async function AdminLayout({
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Si on est sur /admin/login on saute le layout (rendu dans la page elle-même)
-  // Le middleware redirige déjà si non connecté
-
   return (
     <div className={styles.shell}>
       <aside className={styles.sidebar}>
         <Link href="/admin" className={styles.brand}>
-          <div className={styles.brandMark} />
-          <div>
-            <div className={styles.brandTitle}>Patrimoine</div>
-            <div className={styles.brandSub}>Admin · 2026</div>
-          </div>
+          <Image
+            src="/cdc-habitat-logo.jpg"
+            alt="CDC Habitat"
+            width={160}
+            height={54}
+            className={styles.logo}
+          />
         </Link>
+
+        <div className={styles.eventTag}>
+          <div className={styles.eventTagLabel}>Événement</div>
+          <div className={styles.eventTagValue}>Rencontre Patrimoine 2026</div>
+        </div>
 
         <nav className={styles.nav}>
           <div className={styles.navSection}>Tableau de bord</div>

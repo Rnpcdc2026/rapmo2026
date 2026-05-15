@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import Image from 'next/image';
 import styles from './login.module.css';
 
 async function signIn(formData: FormData) {
@@ -22,10 +23,15 @@ export default function LoginPage({
   return (
     <main className={styles.main}>
       <div className={styles.box}>
-        <div className={styles.brandMark} />
-        <h1 className={styles.title}>
-          Espace <em>administration.</em>
-        </h1>
+        <Image
+          src="/cdc-habitat-logo.jpg"
+          alt="CDC Habitat"
+          width={180}
+          height={61}
+          priority
+          className={styles.logo}
+        />
+        <h1 className={styles.title}>Espace administration</h1>
         <p className={styles.subtitle}>
           Rencontre Nationale Patrimoine 2026
         </p>
@@ -47,7 +53,7 @@ export default function LoginPage({
           </div>
           <button type="submit" className={styles.btn}>
             Se connecter
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M2 8h12M9 3l5 5-5 5" />
             </svg>
           </button>

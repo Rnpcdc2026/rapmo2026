@@ -1,13 +1,14 @@
 .shell {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 280px 1fr;
   min-height: 100vh;
+  background: var(--cdc-gray-extra-light);
 }
 
 .sidebar {
-  background: var(--ink);
-  color: var(--paper);
-  padding: 28px 20px;
+  background: white;
+  border-right: 1px solid var(--cdc-gray-light);
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   position: sticky;
@@ -18,44 +19,38 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 8px 24px;
-  border-bottom: 1px solid rgba(251, 247, 241, 0.1);
-  margin-bottom: 20px;
+  padding: 0 8px 20px;
+  border-bottom: 1px solid var(--cdc-gray-light);
+  margin-bottom: 16px;
 }
-.brandMark {
-  width: 32px;
-  height: 32px;
-  background: var(--terracotta);
-  border-radius: 50%;
-  position: relative;
-  flex-shrink: 0;
+.logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
 }
-.brandMark::after {
-  content: '';
-  position: absolute;
-  inset: 6px;
-  background: var(--ink);
-  border-radius: 50%;
+
+.eventTag {
+  padding: 12px;
+  background: var(--cdc-red-light);
+  border-left: 3px solid var(--cdc-red);
+  margin-bottom: 24px;
+  border-radius: 4px;
 }
-.brandMark::before {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  background: var(--terracotta);
-  border-radius: 50%;
-  z-index: 1;
+.eventTagLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--cdc-red-dark);
+  font-weight: 600;
+  margin-bottom: 4px;
 }
-.brandTitle {
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
-  font-size: 15px;
-  color: var(--paper);
-}
-.brandSub {
-  font-size: 11px;
-  color: rgba(251, 247, 241, 0.5);
-  letter-spacing: 0.05em;
+.eventTagValue {
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-strong);
+  line-height: 1.2;
 }
 
 .nav {
@@ -65,12 +60,13 @@
 }
 
 .navSection {
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgba(251, 247, 241, 0.4);
+  color: var(--cdc-gray);
   padding: 16px 8px 8px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .navLink {
@@ -79,24 +75,31 @@
   gap: 12px;
   padding: 10px 12px;
   border-radius: 4px;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: rgba(251, 247, 241, 0.75);
-  transition: all 0.2s;
+  font-weight: 500;
+  color: var(--cdc-gray-dark);
+  transition: all 0.15s;
   cursor: pointer;
 }
 .navLink:hover {
-  background: rgba(251, 247, 241, 0.06);
-  color: var(--paper);
+  background: var(--cdc-gray-extra-light);
+  color: var(--ink-strong);
 }
 .navLink svg {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
+  color: var(--cdc-gray);
+  transition: color 0.15s;
+}
+.navLink:hover svg {
+  color: var(--cdc-red);
 }
 
 .sidebarFooter {
-  padding-top: 20px;
-  border-top: 1px solid rgba(251, 247, 241, 0.1);
+  padding-top: 16px;
+  border-top: 1px solid var(--cdc-gray-light);
 }
 .userBox {
   display: flex;
@@ -108,13 +111,14 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--terracotta);
+  background: var(--cdc-red);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
+  font-family: 'Anek Latin', sans-serif;
+  font-weight: 700;
   font-size: 14px;
+  color: white;
   flex-shrink: 0;
 }
 .userMeta {
@@ -122,8 +126,10 @@
   min-width: 0;
 }
 .userEmail {
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
-  color: rgba(251, 247, 241, 0.85);
+  font-weight: 500;
+  color: var(--ink-strong);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -131,20 +137,21 @@
 .signOut {
   background: none;
   border: none;
-  color: rgba(251, 247, 241, 0.5);
+  color: var(--cdc-gray);
   font-size: 11px;
   padding: 0;
   cursor: pointer;
   text-decoration: underline;
-  font-family: inherit;
+  font-family: 'Inter', sans-serif;
 }
 .signOut:hover {
-  color: var(--rose);
+  color: var(--cdc-red);
 }
 
 .content {
   padding: 40px 48px;
   overflow-x: auto;
+  background: var(--cdc-gray-extra-light);
 }
 
 @media (max-width: 900px) {

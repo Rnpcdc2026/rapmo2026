@@ -1,6 +1,6 @@
 .header {
-  padding: 28px 48px;
-  border-bottom: 1px solid var(--line);
+  padding: 24px 48px;
+  border-bottom: 1px solid var(--cdc-gray-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,41 +10,21 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
-  font-size: 16px;
-  letter-spacing: -0.01em;
 }
-.brandMark {
-  width: 32px;
-  height: 32px;
-  background: var(--terracotta);
-  border-radius: 50%;
-  position: relative;
-}
-.brandMark::after {
-  content: '';
-  position: absolute;
-  inset: 6px;
-  background: var(--paper);
-  border-radius: 50%;
-}
-.brandMark::before {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  background: var(--terracotta);
-  border-radius: 50%;
-  z-index: 1;
+.logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
 }
 .headerMeta {
+  font-family: 'Anek Latin', sans-serif;
   font-size: 13px;
-  color: rgba(26, 22, 18, 0.55);
+  font-weight: 500;
+  color: var(--cdc-gray);
 }
 .headerMeta strong {
-  color: var(--ink);
-  font-weight: 500;
+  color: var(--cdc-red);
+  font-weight: 700;
 }
 
 .progress {
@@ -57,7 +37,7 @@
   top: 0;
   background: var(--paper);
   z-index: 9;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--cdc-gray-light);
 }
 .progressStep {
   flex: 1;
@@ -65,16 +45,18 @@
   display: flex;
   align-items: center;
   gap: 14px;
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: rgba(26, 22, 18, 0.4);
+  font-weight: 500;
+  color: var(--cdc-gray);
   position: relative;
   transition: color 0.3s;
 }
 .progressStepActive {
-  color: var(--ink);
+  color: var(--ink-strong);
 }
 .progressStepDone {
-  color: var(--sage);
+  color: var(--cdc-red);
 }
 .progressStep + .progressStep::before {
   content: '';
@@ -84,29 +66,30 @@
   transform: translateY(-50%);
   width: 1px;
   height: 28px;
-  background: var(--line);
+  background: var(--cdc-gray-light);
 }
 .stepNum {
   width: 28px;
   height: 28px;
-  border: 1px solid currentColor;
+  border: 1.5px solid currentColor;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Fraunces', serif;
-  font-size: 14px;
+  font-family: 'Anek Latin', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
   transition: all 0.3s;
 }
 .progressStepActive .stepNum {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+  background: var(--ink-strong);
+  color: white;
+  border-color: var(--ink-strong);
 }
 .progressStepDone .stepNum {
-  background: var(--sage);
-  color: var(--paper);
-  border-color: var(--sage);
+  background: var(--cdc-red);
+  color: white;
+  border-color: var(--cdc-red);
 }
 
 .formWrap {
@@ -117,9 +100,9 @@
 }
 
 .errorBanner {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #991b1b;
+  background: var(--cdc-red-light);
+  border: 1px solid var(--cdc-red);
+  color: var(--cdc-red-dark);
   padding: 14px 20px;
   border-radius: 4px;
   margin-bottom: 32px;
@@ -130,7 +113,7 @@
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 80px;
-  animation: fadeIn 0.5s ease;
+  animation: fadeIn 0.4s ease;
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -138,22 +121,20 @@
 }
 
 .panelIntro h2 {
-  font-family: 'Fraunces', serif;
-  font-weight: 400;
-  font-size: 38px;
+  font-family: 'Anek Latin', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
   line-height: 1.05;
   letter-spacing: -0.02em;
+  color: var(--ink-strong);
   margin-bottom: 16px;
 }
-.panelIntro h2 em {
-  font-style: italic;
-  color: var(--terracotta-deep);
-}
 .panelIntro p {
-  color: rgba(26, 22, 18, 0.65);
+  font-family: 'Inter', sans-serif;
+  color: var(--cdc-gray-dark);
   font-size: 15px;
   line-height: 1.65;
-  max-width: 460px;
+  max-width: 480px;
 }
 
 .form {
@@ -174,34 +155,36 @@
 }
 .field label {
   display: block;
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: rgba(26, 22, 18, 0.55);
+  color: var(--cdc-gray);
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .field input,
 .field select {
   width: 100%;
   padding: 12px 0;
   border: none;
-  border-bottom: 1px solid var(--line-strong);
+  border-bottom: 1.5px solid var(--cdc-gray-light);
   background: transparent;
-  font-family: 'Fraunces', serif;
-  font-size: 20px;
-  color: var(--ink);
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--ink-strong);
   transition: border-color 0.3s;
   border-radius: 0;
 }
 .field input:focus,
 .field select:focus {
   outline: none;
-  border-bottom-color: var(--terracotta);
+  border-bottom-color: var(--cdc-red);
 }
 .field input::placeholder {
-  color: rgba(26, 22, 18, 0.25);
-  font-style: italic;
+  color: var(--cdc-gray-light);
+  font-weight: 400;
 }
 
 .cards {
@@ -211,68 +194,86 @@
   margin-top: 48px;
 }
 .card {
-  background: var(--paper-warm);
-  border: 1px solid var(--line);
+  background: var(--cdc-gray-extra-light);
+  border: 1.5px solid transparent;
   border-radius: 4px;
   padding: 24px;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.2s;
   position: relative;
 }
 .card:hover {
+  background: white;
+  border-color: var(--cdc-gray-light);
   transform: translateY(-2px);
   box-shadow: var(--shadow);
-  border-color: var(--line-strong);
 }
 .cardSelected {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--paper);
+  background: var(--cdc-red);
+  border-color: var(--cdc-red);
+  color: white;
+}
+.cardSelected:hover {
+  background: var(--cdc-red-dark);
+  border-color: var(--cdc-red-dark);
 }
 .cardSelected .cardMeta {
-  color: rgba(251, 247, 241, 0.7);
+  color: rgba(255, 255, 255, 0.8);
 }
 .cardSelected .cardTag {
-  background: var(--terracotta);
-  color: var(--paper);
-  border-color: var(--terracotta);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.cardSelected h3 {
+  color: white;
+}
+.cardSelected .cardDesc {
+  color: rgba(255, 255, 255, 0.9);
 }
 .cardDisabled {
-  opacity: 0.45;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 .cardDisabled:hover {
   transform: none;
   box-shadow: none;
-  border-color: var(--line);
+  background: var(--cdc-gray-extra-light);
+  border-color: transparent;
 }
 .cardTag {
   display: inline-block;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  font-weight: 600;
   padding: 4px 10px;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--cdc-gray-light);
   border-radius: 50px;
   margin-bottom: 14px;
-  color: rgba(26, 22, 18, 0.65);
+  color: var(--cdc-gray-dark);
 }
 .card h3 {
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
-  font-size: 22px;
+  font-family: 'Anek Latin', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
   line-height: 1.15;
   margin-bottom: 8px;
+  color: var(--ink-strong);
 }
 .cardMeta {
-  font-size: 13px;
-  color: rgba(26, 22, 18, 0.6);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cdc-gray);
   margin-bottom: 14px;
 }
 .cardDesc {
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.55;
-  opacity: 0.85;
+  color: var(--cdc-gray-dark);
 }
 .cardCheck {
   position: absolute;
@@ -280,22 +281,24 @@
   right: 18px;
   width: 22px;
   height: 22px;
-  border: 1.5px solid var(--line-strong);
+  border: 1.5px solid var(--cdc-gray-light);
+  background: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s;
+  transition: all 0.2s;
 }
 .cardSelected .cardCheck {
-  background: var(--terracotta);
-  border-color: var(--terracotta);
+  background: white;
+  border-color: white;
 }
 .cardCheck svg {
   width: 12px;
   height: 12px;
   opacity: 0;
   transition: opacity 0.2s;
+  stroke: var(--cdc-red);
 }
 .cardSelected .cardCheck svg {
   opacity: 1;
@@ -313,18 +316,19 @@
   align-items: center;
   justify-content: space-between;
   padding: 22px 24px;
-  background: var(--paper-warm);
-  border: 1px solid var(--line);
+  background: var(--cdc-gray-extra-light);
+  border: 1.5px solid transparent;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.2s;
 }
 .nightRow:hover {
-  border-color: var(--line-strong);
+  background: white;
+  border-color: var(--cdc-gray-light);
 }
 .nightSelected {
-  background: var(--cream);
-  border-color: var(--terracotta);
+  background: var(--cdc-red-light);
+  border-color: var(--cdc-red);
 }
 .nightInfo {
   display: flex;
@@ -332,25 +336,30 @@
   gap: 18px;
 }
 .nightDate {
-  font-family: 'Fraunces', serif;
-  font-size: 24px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  text-transform: capitalize;
 }
 .nightDay {
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
-  color: rgba(26, 22, 18, 0.6);
+  color: var(--cdc-gray);
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  font-weight: 600;
 }
 .nightDetail {
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: rgba(26, 22, 18, 0.55);
+  color: var(--cdc-gray-dark);
 }
 .nightToggle {
   width: 44px;
   height: 24px;
-  background: rgba(26, 22, 18, 0.15);
+  background: var(--cdc-gray-light);
   border-radius: 50px;
   position: relative;
   transition: background 0.25s;
@@ -369,51 +378,58 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .nightSelected .nightToggle {
-  background: var(--terracotta);
+  background: var(--cdc-red);
 }
 .nightSelected .nightToggle::after {
   transform: translateX(20px);
 }
 
 .busBox {
-  background: var(--paper-warm);
+  background: var(--cdc-gray-extra-light);
   padding: 20px 24px;
   border-radius: 4px;
-  border: 1px solid var(--line);
   margin-bottom: 16px;
 }
 .checkLine {
   display: flex;
   gap: 14px;
   cursor: pointer;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.55;
+  color: var(--cdc-gray-dark);
 }
 .checkLine input {
   margin-top: 3px;
-  accent-color: var(--terracotta);
+  accent-color: var(--cdc-red);
   flex-shrink: 0;
+}
+.checkLine strong {
+  color: var(--ink-strong);
+  font-weight: 600;
 }
 
 .infoBox {
-  background: var(--cream);
+  background: var(--cdc-red-light);
+  border-left: 3px solid var(--cdc-red);
   padding: 20px 24px;
   border-radius: 4px;
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: rgba(26, 22, 18, 0.7);
+  color: var(--cdc-gray-dark);
   line-height: 1.55;
 }
 .infoBox strong {
-  font-weight: 500;
-  color: var(--ink);
+  font-weight: 600;
+  color: var(--cdc-red-dark);
 }
 
 .summary {
   position: sticky;
   top: 100px;
   align-self: start;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--ink-strong);
+  color: white;
   padding: 36px;
   border-radius: 4px;
   overflow: hidden;
@@ -421,57 +437,60 @@
 .summary::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -30%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, var(--terracotta), transparent 70%);
-  opacity: 0.4;
-  border-radius: 50%;
-  filter: blur(40px);
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--cdc-red);
 }
 .summaryTitle {
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgba(251, 247, 241, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 20px;
+  font-weight: 600;
   position: relative;
 }
 .summaryRow {
   display: flex;
   justify-content: space-between;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(251, 247, 241, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 14px;
   position: relative;
   gap: 16px;
 }
 .summaryLabel {
-  color: rgba(251, 247, 241, 0.7);
+  font-family: 'Inter', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
   flex-shrink: 0;
 }
 .summaryValue {
-  font-family: 'Fraunces', serif;
+  font-family: 'Anek Latin', sans-serif;
   font-size: 15px;
+  font-weight: 600;
   text-align: right;
 }
 .empty {
-  color: rgba(251, 247, 241, 0.3);
-  font-style: italic;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 400;
 }
 .summaryDeadline {
   margin-top: 28px;
   padding-top: 24px;
-  border-top: 1px solid rgba(251, 247, 241, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: rgba(251, 247, 241, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
   position: relative;
 }
 .summaryDeadline strong {
-  color: var(--rose);
-  font-weight: 500;
+  color: var(--cdc-red-light);
+  font-weight: 600;
 }
 
 .nav {
@@ -481,31 +500,31 @@
   align-items: center;
   margin-top: 56px;
   padding-top: 36px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--cdc-gray-light);
 }
 .btnPrimary,
 .btnGhost {
-  font-family: 'Inter Tight', sans-serif;
+  font-family: 'Anek Latin', sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.02em;
-  padding: 16px 32px;
-  border-radius: 50px;
+  padding: 14px 28px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.2s;
   border: none;
   display: inline-flex;
   align-items: center;
   gap: 10px;
 }
 .btnPrimary {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--cdc-red);
+  color: white;
 }
 .btnPrimary:hover:not(:disabled) {
-  background: var(--terracotta);
+  background: var(--cdc-red-dark);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-lift);
+  box-shadow: 0 6px 16px rgba(227, 6, 19, 0.25);
 }
 .btnPrimary:disabled {
   opacity: 0.5;
@@ -513,11 +532,12 @@
 }
 .btnGhost {
   background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--line-strong);
+  color: var(--cdc-gray-dark);
+  border: 1.5px solid var(--cdc-gray-light);
 }
 .btnGhost:hover {
-  border-color: var(--ink);
+  border-color: var(--cdc-gray-dark);
+  color: var(--ink-strong);
 }
 .btnPrimary svg,
 .btnGhost svg {
@@ -532,13 +552,13 @@
 .confirmMark {
   width: 80px;
   height: 80px;
-  background: var(--sage);
+  background: var(--cdc-red);
   border-radius: 50%;
   margin: 0 auto 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--paper);
+  color: white;
   animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 @keyframes pop {
@@ -550,52 +570,58 @@
   height: 32px;
 }
 .confirmPanel h2 {
-  font-family: 'Fraunces', serif;
-  font-weight: 400;
-  font-size: 56px;
+  font-family: 'Anek Latin', sans-serif;
+  font-weight: 700;
+  font-size: 52px;
   letter-spacing: -0.03em;
   margin-bottom: 16px;
   line-height: 1;
-}
-.confirmPanel h2 em {
-  font-style: italic;
-  color: var(--terracotta-deep);
+  color: var(--ink-strong);
 }
 .confirmPanel p {
-  color: rgba(26, 22, 18, 0.65);
+  font-family: 'Inter', sans-serif;
+  color: var(--cdc-gray-dark);
   font-size: 17px;
   max-width: 520px;
   margin: 0 auto 40px;
   line-height: 1.6;
 }
+.confirmPanel p strong {
+  color: var(--ink-strong);
+  font-weight: 600;
+}
 .confirmRecap {
   max-width: 540px;
   margin: 0 auto;
   text-align: left;
-  background: var(--paper-warm);
+  background: var(--cdc-gray-extra-light);
   padding: 32px;
   border-radius: 4px;
-  border: 1px solid var(--line);
+  border-left: 3px solid var(--cdc-red);
 }
 .confirmRow {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--cdc-gray-light);
   font-size: 14px;
 }
 .confirmRow:last-child {
   border-bottom: none;
 }
 .confirmLabel {
+  font-family: 'Inter', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 11px;
-  color: rgba(26, 22, 18, 0.55);
+  font-weight: 600;
+  color: var(--cdc-gray);
 }
 .confirmValue {
-  font-family: 'Fraunces', serif;
-  font-size: 16px;
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-strong);
 }
 
 @media (max-width: 900px) {
@@ -621,5 +647,8 @@
   .summary {
     position: relative;
     top: 0;
+  }
+  .logo {
+    height: 36px;
   }
 }

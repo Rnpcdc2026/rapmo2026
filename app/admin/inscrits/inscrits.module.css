@@ -4,31 +4,35 @@
   align-items: flex-end;
   margin-bottom: 32px;
   padding-bottom: 24px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--cdc-gray-light);
 }
 .eyebrow {
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--terracotta);
-  font-weight: 500;
+  color: var(--cdc-red);
+  font-weight: 600;
   margin-bottom: 8px;
 }
 .title {
-  font-family: 'Fraunces', serif;
-  font-weight: 400;
+  font-family: 'Anek Latin', sans-serif;
+  font-weight: 700;
   font-size: 48px;
   line-height: 1;
   letter-spacing: -0.02em;
+  color: var(--ink-strong);
 }
 .titleSub {
-  font-style: italic;
-  color: rgba(26, 22, 18, 0.45);
+  color: var(--cdc-gray);
   font-size: 24px;
+  font-weight: 500;
 }
 .subtitle {
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: var(--terracotta);
+  color: var(--cdc-red);
+  font-weight: 500;
   margin-top: 8px;
 }
 .actions {
@@ -36,12 +40,13 @@
   gap: 12px;
 }
 .btnPrimary {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--cdc-red);
+  color: white;
   padding: 12px 24px;
-  border-radius: 50px;
+  border-radius: 4px;
+  font-family: 'Anek Latin', sans-serif;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   border: none;
   cursor: pointer;
   display: inline-flex;
@@ -50,7 +55,8 @@
   transition: all 0.2s;
 }
 .btnPrimary:hover {
-  background: var(--terracotta);
+  background: var(--cdc-red-dark);
+  box-shadow: 0 4px 12px rgba(227, 6, 19, 0.25);
 }
 .btnPrimary svg {
   width: 14px;
@@ -66,33 +72,34 @@
 .searchInput,
 .filters select {
   padding: 12px 16px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--cdc-gray-light);
   border-radius: 4px;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   background: white;
-  font-family: inherit;
-  color: var(--ink);
+  color: var(--ink-strong);
 }
 .searchInput:focus,
 .filters select:focus {
   outline: none;
-  border-color: var(--terracotta);
+  border-color: var(--cdc-red);
 }
 
 .tableWrap {
   background: white;
-  border: 1px solid var(--line);
+  border: 1px solid var(--cdc-gray-light);
   border-radius: 4px;
   overflow-x: auto;
 }
 .table {
   width: 100%;
   border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
 }
 .table thead {
-  background: var(--paper-warm);
-  border-bottom: 1px solid var(--line);
+  background: var(--cdc-gray-extra-light);
+  border-bottom: 1px solid var(--cdc-gray-light);
 }
 .table th {
   padding: 14px 16px;
@@ -100,12 +107,12 @@
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(26, 22, 18, 0.6);
-  font-weight: 500;
+  color: var(--cdc-gray);
+  font-weight: 600;
 }
 .table td {
   padding: 16px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--cdc-gray-light);
   vertical-align: middle;
 }
 .table tbody tr {
@@ -113,10 +120,10 @@
   transition: background 0.15s;
 }
 .table tbody tr:hover {
-  background: var(--paper-warm);
+  background: var(--cdc-gray-extra-light);
 }
 .rowSelected {
-  background: var(--cream) !important;
+  background: var(--cdc-red-light) !important;
 }
 .table tbody tr:last-child td {
   border-bottom: none;
@@ -127,29 +134,30 @@
   padding-right: 0 !important;
 }
 .checkCol input {
-  accent-color: var(--terracotta);
+  accent-color: var(--cdc-red);
   cursor: pointer;
 }
 
 .refCol {
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
-  color: var(--terracotta-deep);
+  font-family: 'Anek Latin', sans-serif;
+  font-weight: 700;
+  color: var(--cdc-red);
   font-size: 13px;
 }
 .nameCol {
-  font-family: 'Fraunces', serif;
+  font-family: 'Anek Latin', sans-serif;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--ink-strong);
   line-height: 1.2;
 }
 .emailCol {
   font-size: 12px;
-  color: rgba(26, 22, 18, 0.55);
+  color: var(--cdc-gray);
   margin-top: 2px;
 }
 .cellMuted {
-  color: rgba(26, 22, 18, 0.45);
+  color: var(--cdc-gray);
 }
 
 .visitTag {
@@ -161,16 +169,16 @@
 .visitTagDot {
   width: 6px;
   height: 6px;
-  background: var(--sage);
+  background: var(--cdc-red);
   border-radius: 50%;
 }
 
 .yesTag {
   display: inline-block;
-  background: var(--cream);
-  color: var(--terracotta-deep);
+  background: var(--cdc-red-light);
+  color: var(--cdc-red-dark);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 3px 10px;
   border-radius: 50px;
   letter-spacing: 0.05em;
@@ -178,7 +186,7 @@
 
 .emptyRow {
   text-align: center !important;
-  color: rgba(26, 22, 18, 0.45) !important;
+  color: var(--cdc-gray) !important;
   font-style: italic;
   padding: 48px !important;
 }

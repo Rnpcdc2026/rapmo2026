@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import styles from './page.module.css';
 
@@ -16,25 +17,28 @@ export default async function HomePage() {
     <main className={styles.main}>
       <header className={styles.header}>
         <div className={styles.brand}>
-          <div className={styles.brandMark} />
-          <span>Rencontre Nationale Patrimoine</span>
+          <Image
+            src="/cdc-habitat-logo.jpg"
+            alt="CDC Habitat"
+            width={200}
+            height={68}
+            priority
+            className={styles.logo}
+          />
         </div>
         <div className={styles.headerMeta}>
-          Édition <strong>2026</strong> · Lyon
+          Rencontre Nationale Patrimoine <strong>2026</strong>
         </div>
       </header>
 
       <section className={styles.hero}>
-        <div className={styles.decor} />
         <div className={styles.heroGrid}>
           <div>
             <div className={styles.eyebrow}>Inscription ouverte</div>
             <h1 className={styles.title}>
-              Deux jours pour
+              Deux jours pour bâtir
               <br />
-              <em>bâtir ensemble</em>
-              <br />
-              le patrimoine.
+              <span className={styles.titleAccent}>ensemble le patrimoine.</span>
             </h1>
             <p className={styles.lede}>
               Retrouvez 150 à 200 collaborateurs CDC Habitat à Lyon pour partager la
@@ -43,7 +47,7 @@ export default async function HomePage() {
             </p>
             <Link href="/inscription" className={styles.ctaPrimary}>
               S'inscrire au séminaire
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M2 8h12M9 3l5 5-5 5" />
               </svg>
             </Link>
@@ -72,7 +76,7 @@ export default async function HomePage() {
       </section>
 
       <footer className={styles.footer}>
-        <span>CDC Habitat — GIE Expertise &amp; Support · DPG-SMO-2026-01</span>
+        <span>CDC Habitat — GIE Expertise &amp; Support · Référence DPG-SMO-2026-01</span>
         <span>
           Une question ?{' '}
           <a href={`mailto:${event?.contact_email || 'sophie.mondet@cdc-habitat.fr'}`}>

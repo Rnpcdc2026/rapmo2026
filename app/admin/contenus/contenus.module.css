@@ -1,67 +1,70 @@
 .pageHeader {
   margin-bottom: 32px;
   padding-bottom: 24px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--cdc-gray-light);
 }
 .eyebrow {
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--terracotta);
-  font-weight: 500;
+  color: var(--cdc-red);
+  font-weight: 600;
   margin-bottom: 8px;
 }
 .title {
-  font-family: 'Fraunces', serif;
-  font-weight: 400;
+  font-family: 'Anek Latin', sans-serif;
+  font-weight: 700;
   font-size: 38px;
   line-height: 1;
   letter-spacing: -0.02em;
+  color: var(--ink-strong);
 }
 .title em {
-  font-style: italic;
-  color: var(--terracotta-deep);
+  font-style: normal;
+  color: var(--cdc-red);
 }
 
 .tabs {
   display: flex;
   gap: 4px;
   margin-bottom: 24px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--cdc-gray-light);
 }
 .tabs button {
   background: none;
   border: none;
   padding: 12px 20px;
+  font-family: 'Anek Latin', sans-serif;
   font-size: 14px;
-  color: rgba(26, 22, 18, 0.6);
+  color: var(--cdc-gray);
   cursor: pointer;
   border-bottom: 2px solid transparent;
-  font-family: inherit;
-  font-weight: 500;
+  font-weight: 600;
 }
-.tabs button:hover { color: var(--ink); }
+.tabs button:hover { color: var(--ink-strong); }
 .tabActive {
-  color: var(--ink) !important;
-  border-bottom-color: var(--terracotta) !important;
+  color: var(--ink-strong) !important;
+  border-bottom-color: var(--cdc-red) !important;
 }
 
 .alertSuccess,
 .alertError {
   padding: 14px 20px;
   border-radius: 4px;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   margin-bottom: 16px;
 }
 .alertSuccess {
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  color: #065f46;
+  background: var(--cdc-red-light);
+  border-left: 3px solid var(--cdc-red);
+  color: var(--cdc-red-dark);
 }
 .alertError {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #991b1b;
+  background: var(--cdc-red-light);
+  border-left: 3px solid var(--cdc-red);
+  color: var(--cdc-red-dark);
 }
 
 .addBar {
@@ -72,7 +75,7 @@
 
 .card {
   background: white;
-  border: 1px solid var(--line);
+  border: 1px solid var(--cdc-gray-light);
   border-radius: 4px;
   padding: 28px;
   margin-bottom: 16px;
@@ -83,13 +86,14 @@
   align-items: center;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--cdc-gray-light);
 }
 .cardHeader h2 {
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
+  font-family: 'Anek Latin', sans-serif;
+  font-weight: 700;
   font-size: 20px;
   letter-spacing: -0.01em;
+  color: var(--ink-strong);
 }
 .cardHeaderActions {
   display: flex;
@@ -101,12 +105,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: rgba(26, 22, 18, 0.7);
+  font-weight: 500;
+  color: var(--cdc-gray-dark);
   cursor: pointer;
 }
 .toggleLine input {
-  accent-color: var(--terracotta);
+  accent-color: var(--cdc-red);
 }
 
 .formGrid {
@@ -124,29 +130,30 @@
   grid-column: 1 / -1;
 }
 .field label {
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(26, 22, 18, 0.55);
-  font-weight: 500;
+  color: var(--cdc-gray);
+  font-weight: 600;
 }
 .field input,
 .field textarea,
 .field select {
   padding: 10px 14px;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--cdc-gray-light);
   border-radius: 4px;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
-  font-family: inherit;
-  background: var(--paper);
-  color: var(--ink);
+  background: white;
+  color: var(--ink-strong);
   resize: vertical;
 }
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
   outline: none;
-  border-color: var(--terracotta);
+  border-color: var(--cdc-red);
 }
 
 .cardFooter {
@@ -155,46 +162,52 @@
   gap: 12px;
   margin-top: 28px;
   padding-top: 20px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--cdc-gray-light);
 }
 
 .btnPrimary,
 .btnGhost,
 .btnDanger {
   padding: 10px 22px;
-  border-radius: 50px;
+  border-radius: 4px;
+  font-family: 'Anek Latin', sans-serif;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.2s;
-  font-family: inherit;
 }
 .btnPrimary {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--cdc-red);
+  color: white;
 }
-.btnPrimary:hover:not(:disabled) { background: var(--terracotta); }
+.btnPrimary:hover:not(:disabled) {
+  background: var(--cdc-red-dark);
+  box-shadow: 0 4px 12px rgba(227, 6, 19, 0.25);
+}
 .btnPrimary:disabled,
 .btnGhost:disabled,
 .btnDanger:disabled { opacity: 0.4; cursor: not-allowed; }
 .btnGhost {
   background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--line-strong);
+  color: var(--cdc-gray-dark);
+  border: 1.5px solid var(--cdc-gray-light);
 }
-.btnGhost:hover:not(:disabled) { border-color: var(--ink); }
+.btnGhost:hover:not(:disabled) {
+  border-color: var(--cdc-gray-dark);
+  color: var(--ink-strong);
+}
 .btnDanger {
   background: transparent;
-  color: #991b1b;
-  border: 1px solid rgba(153, 27, 27, 0.2);
+  color: var(--cdc-red);
+  border: 1.5px solid var(--cdc-red-light);
 }
 .btnDanger:hover:not(:disabled) {
-  background: #fef2f2;
-  border-color: #991b1b;
+  background: var(--cdc-red-light);
+  border-color: var(--cdc-red);
 }
 
 @media (max-width: 900px) {

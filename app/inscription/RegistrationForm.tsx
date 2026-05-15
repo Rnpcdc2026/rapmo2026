@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import type { Event, Visit, AccommodationNight, Workshop, Entity } from '@/lib/types';
 import styles from './inscription.module.css';
 
@@ -190,11 +191,17 @@ export default function RegistrationForm({
     <main>
       <header className={styles.header}>
         <a href="/" className={styles.brand}>
-          <div className={styles.brandMark} />
-          <span>Rencontre Nationale Patrimoine</span>
+          <Image
+            src="/cdc-habitat-logo.jpg"
+            alt="CDC Habitat"
+            width={200}
+            height={68}
+            priority
+            className={styles.logo}
+          />
         </a>
         <div className={styles.headerMeta}>
-          Édition <strong>2026</strong> · Lyon
+          Rencontre Nationale Patrimoine <strong>2026</strong>
         </div>
       </header>
 
@@ -224,9 +231,7 @@ export default function RegistrationForm({
           <div className={styles.stepPanel}>
             <div>
               <div className={styles.panelIntro}>
-                <h2>
-                  Quelques mots <em>sur vous.</em>
-                </h2>
+                <h2>Quelques mots sur vous.</h2>
                 <p>
                   Ces informations nous permettent de préparer votre venue et de personnaliser
                   votre badge d'accès.
@@ -328,7 +333,7 @@ export default function RegistrationForm({
               <span />
               <button className={styles.btnPrimary} onClick={() => nextStep(2)}>
                 Continuer
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M2 8h12M9 3l5 5-5 5" />
                 </svg>
               </button>
@@ -341,9 +346,7 @@ export default function RegistrationForm({
           <div className={styles.stepPanel}>
             <div>
               <div className={styles.panelIntro}>
-                <h2>
-                  Choisissez votre <em>visite lyonnaise.</em>
-                </h2>
+                <h2>Choisissez votre visite lyonnaise.</h2>
                 <p>
                   Le 7 octobre en fin de journée ou le 9 octobre matin, découvrez le
                   patrimoine et les opérations emblématiques de la métropole. Une visite par
@@ -408,14 +411,14 @@ export default function RegistrationForm({
 
             <div className={styles.nav}>
               <button className={styles.btnGhost} onClick={() => setStep(1)}>
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M14 8H2M7 3L2 8l5 5" />
                 </svg>
                 Retour
               </button>
               <button className={styles.btnPrimary} onClick={() => nextStep(3)}>
                 Continuer
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M2 8h12M9 3l5 5-5 5" />
                 </svg>
               </button>
@@ -428,9 +431,7 @@ export default function RegistrationForm({
           <div className={styles.stepPanel}>
             <div>
               <div className={styles.panelIntro}>
-                <h2>
-                  Réservez vos <em>nuitées.</em>
-                </h2>
+                <h2>Réservez vos nuitées.</h2>
                 <p>
                   L'hébergement est pris en charge dans un hôtel partenaire de la métropole
                   lyonnaise. Sélectionnez les nuits dont vous avez besoin.
@@ -497,7 +498,7 @@ export default function RegistrationForm({
 
             <div className={styles.nav}>
               <button className={styles.btnGhost} onClick={() => setStep(2)}>
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M14 8H2M7 3L2 8l5 5" />
                 </svg>
                 Retour
@@ -509,7 +510,7 @@ export default function RegistrationForm({
               >
                 {submitting ? 'Enregistrement…' : 'Valider mon inscription'}
                 {!submitting && (
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M2 8l4 4 8-8" />
                   </svg>
                 )}
@@ -522,13 +523,11 @@ export default function RegistrationForm({
         {step === 4 && reference && (
           <div className={styles.confirmPanel}>
             <div className={styles.confirmMark}>
-              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="3">
                 <path d="M6 16l7 7 13-14" />
               </svg>
             </div>
-            <h2>
-              Inscription <em>confirmée.</em>
-            </h2>
+            <h2>Inscription confirmée.</h2>
             <p>
               Un email récapitulatif vient de vous être envoyé à <strong>{form.email}</strong>.
               Vous recevrez le programme détaillé et les informations pratiques début septembre.
