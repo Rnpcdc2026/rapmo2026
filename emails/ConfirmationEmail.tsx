@@ -5,6 +5,7 @@ import {
   Head,
   Heading,
   Html,
+  Img,
   Preview,
   Section,
   Text,
@@ -36,6 +37,8 @@ export default function ConfirmationEmail({
   contactEmail,
   appUrl,
 }: Props) {
+  const logoUrl = `${appUrl.replace(/\/$/, '')}/cdc-habitat-logo.jpg`;
+
   return (
     <Html>
       <Head />
@@ -45,7 +48,12 @@ export default function ConfirmationEmail({
           <Section style={headerBar} />
 
           <Section style={header}>
-            <Text style={brandRed}>cdc <span style={{ color: '#1d1d1b' }}>habitat</span></Text>
+            <Img
+              src={logoUrl}
+              alt="CDC Habitat"
+              width="140"
+              style={logo}
+            />
             <Text style={brandMeta}>Rencontre Nationale Patrimoine 2026</Text>
           </Section>
 
@@ -154,8 +162,8 @@ const body = { backgroundColor: '#ECECEC', fontFamily: 'Arial, Helvetica, sans-s
 const container = { maxWidth: 580, margin: '0 auto', backgroundColor: '#FFFFFF', borderRadius: 4, overflow: 'hidden' };
 const headerBar = { height: 4, backgroundColor: '#E30613', margin: 0 };
 const header = { padding: '32px 32px 24px', borderBottom: '1px solid #D6D8D9', marginBottom: 0 };
-const brandRed = { fontFamily: 'Arial Black, Arial, sans-serif', fontWeight: 900, fontSize: 20, color: '#E30613', margin: 0, letterSpacing: '-0.02em' };
-const brandMeta = { fontFamily: 'Arial, sans-serif', fontSize: 12, color: '#828485', margin: '6px 0 0 0', fontWeight: 500 };
+const logo = { display: 'block', margin: 0, height: 'auto' };
+const brandMeta = { fontFamily: 'Arial, sans-serif', fontSize: 12, color: '#828485', margin: '12px 0 0 0', fontWeight: 500 };
 const hero = { padding: '32px 32px 8px' };
 const eyebrow = { fontFamily: 'Arial, sans-serif', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase' as const, color: '#E30613', fontWeight: 700, margin: 0 };
 const h1 = { fontFamily: 'Arial Black, Arial, sans-serif', fontWeight: 800, fontSize: 28, lineHeight: 1.15, color: '#1d1d1b', margin: '16px 0 16px 0', letterSpacing: '-0.02em' };
