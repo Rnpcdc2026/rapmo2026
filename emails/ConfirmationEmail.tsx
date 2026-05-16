@@ -9,6 +9,8 @@ import {
   Text,
   Hr,
   Link,
+  Row,
+  Column,
 } from '@react-email/components';
 import * as React from 'react';
 
@@ -61,14 +63,31 @@ export default function ConfirmationEmail({
 
           <Section style={recap}>
             <Text style={recapTitle}>RÉCAPITULATIF</Text>
-            <Row label="Référence" value={reference} accent />
-            <Row label="Dates" value={eventDates} />
-            <Row label="Lieu" value={eventLocation} />
-            <Row label="Visite" value={visitTitle || 'Aucune'} />
-            <Row
-              label="Nuitées"
-              value={nightDates.length === 0 ? 'Aucune' : nightDates.join(' & ')}
-            />
+
+            <Row style={recapRow}>
+              <Column style={recapLabelCol}><Text style={recapLabel}>Référence</Text></Column>
+              <Column style={recapValueCol}><Text style={recapValueAccent}>{reference}</Text></Column>
+            </Row>
+
+            <Row style={recapRow}>
+              <Column style={recapLabelCol}><Text style={recapLabel}>Dates</Text></Column>
+              <Column style={recapValueCol}><Text style={recapValue}>{eventDates}</Text></Column>
+            </Row>
+
+            <Row style={recapRow}>
+              <Column style={recapLabelCol}><Text style={recapLabel}>Lieu</Text></Column>
+              <Column style={recapValueCol}><Text style={recapValue}>{eventLocation}</Text></Column>
+            </Row>
+
+            <Row style={recapRow}>
+              <Column style={recapLabelCol}><Text style={recapLabel}>Visite</Text></Column>
+              <Column style={recapValueCol}><Text style={recapValue}>{visitTitle || 'Aucune'}</Text></Column>
+            </Row>
+
+            <Row style={recapRowLast}>
+              <Column style={recapLabelCol}><Text style={recapLabel}>Nuitées</Text></Column>
+              <Column style={recapValueCol}><Text style={recapValue}>{nightDates.length === 0 ? 'Aucune' : nightDates.join(' & ')}</Text></Column>
+            </Row>
           </Section>
 
           <Hr style={hr} />
@@ -101,58 +120,6 @@ export default function ConfirmationEmail({
   );
 }
 
-function Row({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
-  return (
-    <table
-      width="100%"
-      cellPadding={0}
-      cellSpacing={0}
-      style={{
-        width: '100%',
-        borderCollapse: 'collapse',
-        borderBottom: '1px solid #D6D8D9',
-        tableLayout: 'fixed',
-      }}
-    >
-      <tbody>
-        <tr>
-          <td
-            style={{
-              padding: '14px 0',
-              fontFamily: 'Arial, sans-serif',
-              fontSize: 11,
-              letterSpacing: 1,
-              textTransform: 'uppercase',
-              color: '#828485',
-              fontWeight: 600,
-              width: '35%',
-              verticalAlign: 'top',
-              wordBreak: 'break-word',
-            }}
-          >
-            {label}
-          </td>
-          <td
-            style={{
-              padding: '14px 0',
-              fontFamily: 'Arial, sans-serif',
-              fontSize: 14,
-              fontWeight: 700,
-              color: accent ? '#E30613' : '#1d1d1b',
-              textAlign: 'right',
-              width: '65%',
-              verticalAlign: 'top',
-              wordBreak: 'break-word',
-            }}
-          >
-            {value}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  );
-}
-
 const body = { backgroundColor: '#ECECEC', fontFamily: 'Arial, Helvetica, sans-serif', margin: 0, padding: '20px 0' };
 const container = { maxWidth: 600, margin: '0 auto', backgroundColor: '#FFFFFF', borderRadius: 4, overflow: 'hidden' };
 const headerBar = { height: 4, backgroundColor: '#E30613', margin: 0 };
@@ -163,8 +130,17 @@ const hero = { padding: '32px 32px 8px' };
 const eyebrow = { fontFamily: 'Arial, sans-serif', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase' as const, color: '#E30613', fontWeight: 700, margin: 0 };
 const h1 = { fontFamily: 'Arial Black, Arial, sans-serif', fontWeight: 800, fontSize: 26, lineHeight: 1.2, color: '#1d1d1b', margin: '16px 0 16px 0', letterSpacing: '-0.02em' };
 const lede = { fontFamily: 'Arial, sans-serif', fontSize: 15, lineHeight: 1.6, color: '#4C4C4B', margin: 0 };
+
 const recap = { backgroundColor: '#ECECEC', padding: 24, margin: '24px 32px', borderRadius: 4, borderLeft: '3px solid #E30613' };
 const recapTitle = { fontFamily: 'Arial, sans-serif', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase' as const, color: '#828485', fontWeight: 700, margin: '0 0 12px 0' };
+const recapRow = { borderBottom: '1px solid #D6D8D9' };
+const recapRowLast = { borderBottom: 'none' };
+const recapLabelCol = { width: '35%', verticalAlign: 'top' as const };
+const recapValueCol = { width: '65%', verticalAlign: 'top' as const };
+const recapLabel = { fontFamily: 'Arial, sans-serif', fontSize: 11, letterSpacing: 1, textTransform: 'uppercase' as const, color: '#828485', fontWeight: 600, margin: '14px 0' };
+const recapValue = { fontFamily: 'Arial, sans-serif', fontSize: 14, fontWeight: 700, color: '#1d1d1b', textAlign: 'right' as const, margin: '14px 0', wordBreak: 'break-word' as const };
+const recapValueAccent = { fontFamily: 'Arial, sans-serif', fontSize: 14, fontWeight: 700, color: '#E30613', textAlign: 'right' as const, margin: '14px 0', wordBreak: 'break-word' as const };
+
 const hr = { borderColor: '#D6D8D9', margin: '24px 32px' };
 const paragraph = { fontFamily: 'Arial, sans-serif', fontSize: 14, lineHeight: 1.6, color: '#4C4C4B', padding: '0 32px', marginBottom: 16 };
 const link = { color: '#E30613', textDecoration: 'underline', fontWeight: 600 };
