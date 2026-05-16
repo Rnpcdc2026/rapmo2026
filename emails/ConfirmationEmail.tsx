@@ -38,7 +38,7 @@ export default function ConfirmationEmail({
   return (
     <Html>
       <Head />
-      <Preview>Votre inscription à {eventTitle} est confirmée — réf. {reference}</Preview>
+      <Preview>Votre inscription a {eventTitle} est confirmee - ref. {reference}</Preview>
       <Body style={body}>
         <Container style={container}>
           <Section style={headerBar} />
@@ -49,24 +49,24 @@ export default function ConfirmationEmail({
           </Section>
 
           <Section style={hero}>
-            <Text style={eyebrow}>● Inscription confirmée</Text>
+            <Text style={eyebrow}>INSCRIPTION CONFIRMEE</Text>
             <Heading style={h1}>
-              Bonjour {firstName}, à très bientôt à Lyon.
+              Bonjour {firstName}, a tres bientot a Lyon.
             </Heading>
             <Text style={lede}>
-              Votre inscription à <strong>{eventTitle}</strong> est bien enregistrée. Vous recevrez
-              le programme détaillé et les informations pratiques début septembre.
+              Votre inscription a <strong>{eventTitle}</strong> est bien enregistree. Vous recevrez
+              le programme detaille et les informations pratiques debut septembre.
             </Text>
           </Section>
 
           <Section style={recap}>
-            <Text style={recapTitle}>RÉCAPITULATIF</Text>
-            <Row label="Référence" value={reference} accent />
+            <Text style={recapTitle}>RECAPITULATIF</Text>
+            <Row label="Reference" value={reference} accent />
             <Row label="Dates" value={eventDates} />
             <Row label="Lieu" value={eventLocation} />
             <Row label="Visite" value={visitTitle || 'Aucune'} />
             <Row
-              label="Nuitées"
+              label="Nuitees"
               value={nightDates.length === 0 ? 'Aucune' : nightDates.join(' & ')}
             />
           </Section>
@@ -77,11 +77,11 @@ export default function ConfirmationEmail({
             <Text style={paragraph}>
               <strong>Besoin de modifier votre inscription ?</strong>
               <br />
-              Écrivez-nous à <Link href={`mailto:${contactEmail}`} style={link}>{contactEmail}</Link> en
-              précisant votre référence d'inscription.
+              Ecrivez-nous a <Link href={`mailto:${contactEmail}`} style={link}>{contactEmail}</Link> en
+              precisant votre reference d'inscription.
             </Text>
             <Text style={paragraph}>
-              <strong>Plus d'informations sur l'événement :</strong>
+              <strong>Plus d'informations sur l'evenement :</strong>
               <br />
               <Link href={appUrl} style={link}>{appUrl}</Link>
             </Text>
@@ -91,9 +91,9 @@ export default function ConfirmationEmail({
 
           <Section style={footer}>
             <Text style={footerText}>
-              CDC Habitat — GIE Expertise &amp; Support · Direction du Patrimoine Groupe
+              CDC Habitat - GIE Expertise &amp; Support - Direction du Patrimoine Groupe
             </Text>
-            <Text style={footerText}>Référence dossier : DPG-SMO-2026-01</Text>
+            <Text style={footerText}>Reference dossier : DPG-SMO-2026-01</Text>
           </Section>
         </Container>
       </Body>
@@ -103,48 +103,38 @@ export default function ConfirmationEmail({
 
 function Row({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
-    <table
+    <div
       style={{
-        width: '100%',
-        borderCollapse: 'collapse',
+        padding: '14px 0',
         borderBottom: '1px solid #D6D8D9',
-        tableLayout: 'fixed',
       }}
     >
-      <tbody>
-        <tr>
-          <td
-            style={{
-              padding: '12px 8px 12px 0',
-              fontFamily: 'Arial, sans-serif',
-              fontSize: 11,
-              letterSpacing: 1.5,
-              textTransform: 'uppercase',
-              color: '#828485',
-              fontWeight: 600,
-              width: 90,
-              verticalAlign: 'top',
-            }}
-          >
-            {label}
-          </td>
-          <td
-            style={{
-              padding: '12px 0',
-              fontFamily: 'Arial, sans-serif',
-              fontSize: 15,
-              fontWeight: 600,
-              color: accent ? '#E30613' : '#1d1d1b',
-              textAlign: 'right',
-              wordBreak: 'break-word',
-              verticalAlign: 'top',
-            }}
-          >
-            {value}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <div
+        style={{
+          fontFamily: 'Arial, sans-serif',
+          fontSize: 11,
+          letterSpacing: 1.5,
+          textTransform: 'uppercase',
+          color: '#828485',
+          fontWeight: 600,
+          marginBottom: 4,
+        }}
+      >
+        {label}
+      </div>
+      <div
+        style={{
+          fontFamily: 'Arial, sans-serif',
+          fontSize: 17,
+          fontWeight: 700,
+          color: accent ? '#E30613' : '#1d1d1b',
+          lineHeight: 1.3,
+          wordBreak: 'break-word',
+        }}
+      >
+        {value}
+      </div>
+    </div>
   );
 }
 
@@ -158,8 +148,8 @@ const hero = { padding: '32px 32px 8px' };
 const eyebrow = { fontFamily: 'Arial, sans-serif', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase' as const, color: '#E30613', fontWeight: 700, margin: 0 };
 const h1 = { fontFamily: 'Arial Black, Arial, sans-serif', fontWeight: 800, fontSize: 28, lineHeight: 1.15, color: '#1d1d1b', margin: '16px 0 16px 0', letterSpacing: '-0.02em' };
 const lede = { fontFamily: 'Arial, sans-serif', fontSize: 15, lineHeight: 1.6, color: '#4C4C4B', margin: 0 };
-const recap = { backgroundColor: '#ECECEC', padding: 24, margin: '24px 32px', borderRadius: 4, borderLeft: '3px solid #E30613' };
-const recapTitle = { fontFamily: 'Arial, sans-serif', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase' as const, color: '#828485', fontWeight: 700, margin: '0 0 12px 0' };
+const recap = { backgroundColor: '#ECECEC', padding: '20px 24px', margin: '24px 24px', borderRadius: 4, borderLeft: '3px solid #E30613' };
+const recapTitle = { fontFamily: 'Arial, sans-serif', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase' as const, color: '#828485', fontWeight: 700, margin: '0 0 8px 0' };
 const hr = { borderColor: '#D6D8D9', margin: '24px 32px' };
 const paragraph = { fontFamily: 'Arial, sans-serif', fontSize: 14, lineHeight: 1.6, color: '#4C4C4B', padding: '0 32px', marginBottom: 16 };
 const link = { color: '#E30613', textDecoration: 'underline', fontWeight: 600 };
