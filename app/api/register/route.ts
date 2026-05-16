@@ -22,7 +22,6 @@ export async function POST(req: NextRequest) {
   try {
     const body = (await req.json()) as RegisterPayload;
 
-    // ─── Validation ───
     if (!body.firstName || !body.lastName || !body.email || !body.entity) {
       return NextResponse.json(
         { error: 'Champs obligatoires manquants.' },
@@ -35,29 +34,27 @@ export async function POST(req: NextRequest) {
 
     const supabase = createAdminClient();
 
-    // ─── Vérifier l'événement ───
     const { data: event, error: evErr } = await supabase
       .from('events')
       .select('*')
       .eq('id', body.eventId)
       .single();
     if (evErr || !event) {
-      return NextResponse.json({ error: 'Événement introuvable.' }, { status: 404 });
+      return NextResponse.json({ error: 'Evenement introuvable.' }, { status: 404 });
     }
     if (!event.is_open) {
       return NextResponse.json(
-        { error: 'Les inscriptions sont fermées.' },
+        { error: 'Les inscriptions sont fermees.' },
         { status: 403 }
       );
     }
     if (new Date(event.registration_deadline) < new Date()) {
       return NextResponse.json(
-        { error: 'La date limite d\'inscription est dépassée.' },
+        { error: 'La date limite d inscription est depassee.' },
         { status: 403 }
       );
     }
 
-    // ─── Anti-doublon (même email pour le même événement) ───
     const { data: existing } = await supabase
       .from('registrations')
       .select('id, reference')
@@ -68,13 +65,12 @@ export async function POST(req: NextRequest) {
     if (existing) {
       return NextResponse.json(
         {
-          error: `Une inscription existe déjà pour cet email (référence ${existing.reference}). Contactez l'organisation pour la modifier.`,
+          error: 'Une inscription existe deja pour cet email (reference ' + existing.reference + '). Contactez l organisation pour la modifier.',
         },
         { status: 409 }
       );
     }
 
-    // ─── Vérification capacité visite ───
     if (body.visitId) {
       const { data: visit } = await supabase
         .from('visits')
@@ -88,17 +84,15 @@ export async function POST(req: NextRequest) {
         .eq('status', 'confirmed');
       if (visit && currentCount !== null && currentCount >= visit.capacity) {
         return NextResponse.json(
-          { error: 'Cette visite est complète. Merci d\'en choisir une autre.' },
+          { error: 'Cette visite est complete. Merci d en choisir une autre.' },
           { status: 409 }
         );
       }
     }
 
-    // ─── Générer la référence ───
     const { data: refData } = await supabase.rpc('generate_registration_reference');
     const reference = refData as unknown as string;
 
-    // ─── Insertion ───
     const { data: registration, error: regErr } = await supabase
       .from('registrations')
       .insert({
@@ -120,12 +114,11 @@ export async function POST(req: NextRequest) {
     if (regErr || !registration) {
       console.error('Insertion error:', regErr);
       return NextResponse.json(
-        { error: 'Erreur lors de l\'enregistrement.' },
+        { error: 'Erreur lors de l enregistrement.' },
         { status: 500 }
       );
     }
 
-    // ─── Liaisons nuitées ───
     if (body.nightIds.length > 0) {
       await supabase.from('registration_nights').insert(
         body.nightIds.map((nightId) => ({
@@ -135,7 +128,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ─── Liaisons ateliers ───
     if (body.workshopIds.length > 0) {
       await supabase.from('registration_workshops').insert(
         body.workshopIds.map((workshopId) => ({
@@ -145,12 +137,31 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ─── Marquer l'invitation comme convertie si elle existe ───
     await supabase
       .from('invitations')
       .update({ registered: true })
       .eq('event_id', body.eventId)
       .eq('email', body.email.toLowerCase());
 
-    // ─── Email de confirmation : await direct (bloquant mais fiable sur Vercel serverless) ───
-    // On l'enveloppe dans un try/catch pour que même
+    try {
+      await sendConfirmationEmail({
+        registrationId: registration.id,
+        eventId: body.eventId,
+      });
+    } catch (emailErr) {
+      console.error('[REGISTER] Email send failed:', emailErr);
+    }
+
+    return NextResponse.json({
+      success: true,
+      reference,
+      registrationId: registration.id,
+    });
+  } catch (error) {
+    console.error('Register route error:', error);
+    return NextResponse.json(
+      { error: 'Erreur serveur. Merci de reessayer.' },
+      { status: 500 }
+    );
+  }
+}
