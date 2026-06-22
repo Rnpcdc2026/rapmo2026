@@ -2,7 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Rencontre Nationale Patrimoine 2026 — CDC Habitat',
+  title: "Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026 — CDC Habitat",
   description: 'Inscription au séminaire patrimoine Groupe des 8 & 9 octobre 2026 à Lyon.',
 };
 

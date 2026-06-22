@@ -1,7 +1,7 @@
 {
-  "name": "rnp2026-inscription",
+  "name": "rapmo2026-inscription",
   "version": "1.0.0",
-  "description": "Plateforme d'inscription Rencontre Nationale Patrimoine 2026 - CDC Habitat",
+  "description": "Plateforme d'inscription Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026 - CDC Habitat",
   "private": true,
   "scripts": {
     "dev": "next dev",

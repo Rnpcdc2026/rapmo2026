@@ -96,7 +96,7 @@ export default function RegistrationForm({
       })
       .catch(() => {
         setInviteesError(
-          'Impossible de charger la liste des invités. Rafraîchissez la page ou contactez rnpcdc@gmail.com.'
+          'Impossible de charger la liste des invités. Rafraîchissez la page ou contactez rapmo.lyon@gmail.com.'
         );
         setInviteesLoading(false);
       });
@@ -241,7 +241,7 @@ export default function RegistrationForm({
           />
         </a>
         <div className={styles.headerMeta}>
-          Rencontre Nationale Patrimoine <strong>2026</strong>
+          Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage <strong>2026</strong>
         </div>
       </header>
 
@@ -340,8 +340,8 @@ export default function RegistrationForm({
                           >
                             Si vous êtes invité(e) et que votre nom n&apos;apparaît pas dans
                             la liste, merci de contacter l&apos;organisation à{' '}
-                            <a href="mailto:rnpcdc@gmail.com" style={{ color: '#4C4C4B' }}>
-                              rnpcdc@gmail.com
+                            <a href="mailto:rapmo.lyon@gmail.com" style={{ color: '#4C4C4B' }}>
+                              rapmo.lyon@gmail.com
                             </a>
                             .
                           </div>

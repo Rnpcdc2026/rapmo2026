@@ -22,7 +22,7 @@ export default async function InscriptionPage({
   const { data: event } = await supabase
     .from('events')
     .select('*')
-    .eq('slug', 'rnp-2026')
+    .eq('slug', 'rapmo-2026')
     .single();
 
   if (!event) {

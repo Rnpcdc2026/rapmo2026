@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   const { data: event } = await supabase
     .from('events')
     .select('id')
-    .eq('slug', 'rnp-2026')
+    .eq('slug', 'rapmo-2026')
     .single();
 
   if (!event) {

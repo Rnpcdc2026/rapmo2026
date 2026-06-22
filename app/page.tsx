@@ -10,7 +10,7 @@ export default async function HomePage() {
   const { data: event } = await supabase
     .from('events')
     .select('*')
-    .eq('slug', 'rnp-2026')
+    .eq('slug', 'rapmo-2026')
     .single();
 
   return (
@@ -27,7 +27,7 @@ export default async function HomePage() {
           />
         </div>
         <div className={styles.headerMeta}>
-          Rencontre Nationale Patrimoine <strong>2026</strong>
+          Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage <strong>2026</strong>
         </div>
       </header>
 

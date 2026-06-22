@@ -80,14 +80,14 @@ export async function POST(req: NextRequest) {
 
     if (!invitation) {
       return NextResponse.json(
-        { error: "Cette adresse n'est pas autorisée. Si vous êtes invité(e), contactez rnpcdc@gmail.com." },
+        { error: "Cette adresse n'est pas autorisée. Si vous êtes invité(e), contactez rapmo.lyon@gmail.com." },
         { status: 403 }
       );
     }
 
     if (invitation.registered) {
       return NextResponse.json(
-        { error: 'Vous êtes déjà inscrit(e). Pour modifier votre inscription, contactez rnpcdc@gmail.com.' },
+        { error: 'Vous êtes déjà inscrit(e). Pour modifier votre inscription, contactez rapmo.lyon@gmail.com.' },
         { status: 409 }
       );
     }

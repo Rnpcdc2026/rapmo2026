@@ -52,7 +52,7 @@ export default function LoginPage({ searchParams }: { searchParams: SearchParams
               lineHeight: '1.3',
             }}
           >
-            Rencontre Nationale Patrimoine 2026
+            Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026
           </h1>
           <p style={{ fontSize: '14px', color: '#6b6b6a', margin: 0 }}>
             Espace d&apos;inscription réservé aux invités

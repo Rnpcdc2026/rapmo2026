@@ -54,7 +54,7 @@ export default function ConfirmationEmail({
               width="140"
               style={logo}
             />
-            <Text style={brandMeta}>Rencontre Nationale Patrimoine 2026</Text>
+            <Text style={brandMeta}>Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026</Text>
           </Section>
 
           <Section style={hero}>
@@ -105,7 +105,7 @@ export default function ConfirmationEmail({
             <Text style={signatureText}>
               À très bientôt,
               <br />
-              <strong>L&apos;équipe Rencontre Nationale Patrimoine 2026</strong>
+              <strong>L&apos;équipe Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026</strong>
             </Text>
           </Section>
 

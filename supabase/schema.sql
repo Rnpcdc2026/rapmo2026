@@ -1,5 +1,5 @@
 -- ════════════════════════════════════════════════════════════════════
--- Plateforme d'inscription RNP 2026 — Schéma de base de données
+-- Plateforme d'inscription RAPMO 2026 — Schéma de base de données
 -- À exécuter dans Supabase > SQL Editor
 -- ════════════════════════════════════════════════════════════════════
 
@@ -74,7 +74,7 @@ create table if not exists entities (
 create table if not exists registrations (
   id uuid primary key default gen_random_uuid(),
   event_id uuid references events(id) on delete cascade,
-  reference text unique not null,   -- ex: RNP-2026-A4F2
+  reference text unique not null,   -- ex: RAPMO-2026-A4F2
   
   -- Identité
   first_name text not null,
@@ -215,8 +215,8 @@ create policy "public read entities" on entities for select using (is_active = t
 -- ════════════════════════════════════════════════════════════════════
 insert into events (slug, title, subtitle, start_date, end_date, location, registration_deadline, contact_email)
 values (
-  'rnp-2026',
-  'Rencontre Nationale Patrimoine 2026',
+  'rapmo-2026',
+  'Rencontres Annuelles Patrimoine et Maîtrise d''Ouvrage 2026',
   'Deux jours pour bâtir ensemble le patrimoine',
   '2026-10-08',
   '2026-10-09',
@@ -231,7 +231,7 @@ do $$
 declare
   ev_id uuid;
 begin
-  select id into ev_id from events where slug = 'rnp-2026';
+  select id into ev_id from events where slug = 'rapmo-2026';
   
   -- Visites
   insert into visits (event_id, code, title, description, slot_label, slot_date, capacity, display_order) values
@@ -278,7 +278,7 @@ declare
   exists_count integer;
 begin
   loop
-    ref := 'RNP-2026-' || upper(substring(replace(gen_random_uuid()::text, '-', '') from 1 for 4));
+    ref := 'RAPMO-2026-' || upper(substring(replace(gen_random_uuid()::text, '-', '') from 1 for 4));
     select count(*) into exists_count from registrations where reference = ref;
     exit when exists_count = 0;
   end loop;

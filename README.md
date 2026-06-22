@@ -1,6 +1,6 @@
-# RNP 2026 — Plateforme d'inscription
+# RAPMO 2026 — Plateforme d'inscription
 
-Plateforme web pour la **Rencontre Nationale Patrimoine 2026** de CDC Habitat (8–9 octobre 2026, Lyon).
+Plateforme web pour les **Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026** de CDC Habitat (8–9 octobre 2026, Lyon).
 
 Stack : **Next.js 14** (App Router) · **Supabase** (Postgres + Auth) · **Resend** (emails) · déploiement **Vercel**.
 
@@ -68,10 +68,10 @@ Ouvrir :
 
 1. Push le projet sur GitHub.
 2. Sur [vercel.com](https://vercel.com), **Import Project** → sélectionner le repo.
-3. Dans **Settings → Environment Variables**, copier toutes les variables de `.env.local` (sauf qu'on remplace `NEXT_PUBLIC_APP_URL` par l'URL Vercel finale, ex. `https://rnp2026.vercel.app`).
+3. Dans **Settings → Environment Variables**, copier toutes les variables de `.env.local` (sauf qu'on remplace `NEXT_PUBLIC_APP_URL` par l'URL Vercel finale, ex. `https://rapmo2026.vercel.app`).
 4. **Deploy**. C'est tout.
 
-**Domaine personnalisé** (recommandé) : dans Vercel → **Settings → Domains**, ajouter votre domaine (ex. `inscription.rnp2026.fr`). Vercel guide la config DNS.
+**Domaine personnalisé** (recommandé) : dans Vercel → **Settings → Domains**, ajouter votre domaine (ex. `inscription.rapmo2026.fr`). Vercel guide la config DNS.
 
 ---
 
@@ -94,7 +94,7 @@ Ouvrir :
 ## 🗂️ Arborescence
 
 ```
-rnp2026/
+rapmo2026/
 ├── app/
 │   ├── (auth)/admin/login/      # Page de connexion admin (sans sidebar)
 │   ├── admin/                    # Back-office (sidebar + auth obligatoire)

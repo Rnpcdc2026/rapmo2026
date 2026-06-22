@@ -2,7 +2,7 @@
 
 ## 📦 Contenu de cette archive
 
-Cette archive contient les **18 fichiers** à mettre à jour dans votre projet `rnp2026` pour appliquer la charte graphique officielle CDC Habitat 2026.
+Cette archive contient les **18 fichiers** à mettre à jour dans votre projet `rapmo2026` pour appliquer la charte graphique officielle CDC Habitat 2026.
 
 **Aucun fichier n'est supprimé** — vous écrasez seulement les fichiers existants.
 
@@ -21,16 +21,16 @@ Cette archive contient les **18 fichiers** à mettre à jour dans votre projet `
 
 Sur votre Mac, ouvrez **Finder** et allez dans :
 ```
-Documents > GitHub > rnp2026
+Documents > GitHub > rapmo2026
 ```
 (ou l'emplacement où GitHub Desktop a cloné le repo)
 
 ### Étape 2 — Décompresser cette archive
 
-Double-cliquez sur le fichier `rnp2026-refonte-cdc.zip` qu'on vous a livré. Vous obtenez un dossier `rnp2026-cdc` avec la structure suivante :
+Double-cliquez sur le fichier `rapmo2026-refonte-cdc.zip` qu'on vous a livré. Vous obtenez un dossier `rapmo2026-cdc` avec la structure suivante :
 
 ```
-rnp2026-cdc/
+rapmo2026-cdc/
 ├── app/
 │   ├── (auth)/admin/login/login.module.css
 │   ├── (auth)/admin/login/page.tsx
@@ -58,9 +58,9 @@ rnp2026-cdc/
 
 **Méthode la plus simple** :
 
-1. Dans le Finder, sélectionnez **tout le contenu** du dossier `rnp2026-cdc` (les 3 dossiers `app/`, `emails/`, `public/`)
+1. Dans le Finder, sélectionnez **tout le contenu** du dossier `rapmo2026-cdc` (les 3 dossiers `app/`, `emails/`, `public/`)
 2. Faites **Cmd + C** (copier)
-3. Allez dans votre dossier `Documents > GitHub > rnp2026`
+3. Allez dans votre dossier `Documents > GitHub > rapmo2026`
 4. Faites **Cmd + V** (coller)
 5. Le Mac vous demandera : **"Voulez-vous remplacer les éléments existants ?"**
 6. Cliquez sur **« Remplacer »** ou **« Fusionner »** selon les cas
@@ -70,7 +70,7 @@ rnp2026-cdc/
 ### Étape 4 — Vérifier dans GitHub Desktop
 
 1. Ouvrez **GitHub Desktop**
-2. Sélectionnez le repo `rnp2026`
+2. Sélectionnez le repo `rapmo2026`
 3. Dans la colonne de gauche **"Changes"**, vous devriez voir **18 fichiers modifiés** (en jaune/orange)
 4. Vous pouvez cliquer sur chaque fichier pour voir un aperçu des changements
 
@@ -85,11 +85,11 @@ En bas à gauche de GitHub Desktop :
 
 ### Étape 6 — Attendre le redéploiement Vercel
 
-1. Allez sur https://vercel.com/rnpcdc2026s-projects/rnp2026
+1. Allez sur https://vercel.com/rnpcdc2026s-projects/rapmo2026
 2. Vercel détecte automatiquement le push GitHub
 3. Un nouveau déploiement démarre (icône jaune ⏳)
 4. **Attendez 2-3 minutes** que le statut passe au vert ✅
-5. Allez sur https://rnp2026.vercel.app pour voir le résultat
+5. Allez sur https://rapmo2026.vercel.app pour voir le résultat
 
 ## ✅ Tests à effectuer après déploiement
 
@@ -109,4 +109,4 @@ En bas à gauche de GitHub Desktop :
 
 ---
 
-CDC Habitat — Rencontre Nationale Patrimoine 2026 · Référence DPG-SMO-2026-01
+CDC Habitat — Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026 · Référence DPG-SMO-2026-01

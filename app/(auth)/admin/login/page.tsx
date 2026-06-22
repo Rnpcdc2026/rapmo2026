@@ -33,7 +33,7 @@ export default function LoginPage({
         />
         <h1 className={styles.title}>Espace administration</h1>
         <p className={styles.subtitle}>
-          Rencontre Nationale Patrimoine 2026
+          Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026
         </p>
 
         {searchParams.error && (

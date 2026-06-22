@@ -41,7 +41,7 @@ export default function ReminderEmail({
               cdc <span style={{color: '#1d1d1b'}}>habitat</span>
             </Text>
             <Text style={{ fontFamily: 'Arial, sans-serif', fontSize: 12, color: '#828485', margin: '6px 0 0 0', fontWeight: 500 }}>
-              Rencontre Nationale Patrimoine 2026
+              Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026
             </Text>
           </Section>
 
