@@ -179,9 +179,12 @@ export default function RegistrationForm({
   };
 
   const validateStep1 = () => {
-    const errors: { invitee?: string; role?: string } = {};
+    const errors: { invitee?: string; phone?: string; role?: string } = {};
     if (!selectedInviteeId) {
       errors.invitee = 'Merci de sélectionner votre nom dans la liste ci-dessus.';
+    }
+    if (!form.phone.trim()) {
+      errors.phone = 'Merci de renseigner votre numéro de téléphone.';
     }
     if (!form.role.trim()) {
       errors.role = "Merci d'indiquer votre fonction.";
@@ -285,6 +288,7 @@ export default function RegistrationForm({
     if (n === 2) {
       const errors = validateStep1();
       if (errors.invitee) { setError(errors.invitee); return; }
+      if (errors.phone) { setError(errors.phone); return; }
       if (errors.role) { setError(errors.role); return; }
     }
     if (n === 3) {
@@ -313,8 +317,8 @@ export default function RegistrationForm({
     setError(null);
 
     const s1Errors = validateStep1();
-    if (s1Errors.invitee || s1Errors.role) {
-      setError(s1Errors.invitee ?? s1Errors.role ?? '');
+    if (s1Errors.invitee || s1Errors.phone || s1Errors.role) {
+      setError(s1Errors.invitee ?? s1Errors.phone ?? s1Errors.role ?? '');
       setStep(1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -634,6 +638,10 @@ export default function RegistrationForm({
                 </p>
               </div>
 
+              {step2Errors.presence && (
+                <p className={styles.errorMessage}>{step2Errors.presence}</p>
+              )}
+
               <div className={styles.sessionList}>
                 <label className={`${styles.sessionItem} ${form.attends_thursday_morning ? styles.sessionItemChecked : ''}`}>
                   <input
@@ -695,10 +703,6 @@ export default function RegistrationForm({
                   </div>
                 </label>
               </div>
-
-              {step2Errors.presence && (
-                <p className={styles.errorMessage}>{step2Errors.presence}</p>
-              )}
 
               {(form.attends_thursday_afternoon || form.attends_friday_morning || form.attends_friday_afternoon) && (
                 <div className={styles.choicesContainer}>
