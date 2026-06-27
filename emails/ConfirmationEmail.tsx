@@ -94,8 +94,8 @@ export default function ConfirmationEmail({
           </Section>
 
           <Section style={ctaWrapper}>
-            <Button href={appUrl} style={cta}>
-              Voir le programme et les infos pratiques
+            <Button href={`${appUrl.replace(/\/$/, '')}/acces`} style={cta}>
+              Voir les infos d&apos;accès au Sucre
             </Button>
           </Section>
 
