@@ -221,7 +221,7 @@ values (
   '2026-10-08',
   '2026-10-09',
   'Métropole lyonnaise',
-  '2026-09-25 17:00:00+02',
+  '2026-09-15 17:00:00+02',
   'sophie.mondet@cdc-habitat.fr'
 )
 on conflict (slug) do nothing;

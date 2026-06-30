@@ -69,7 +69,7 @@ export default async function HomePage() {
             </div>
             <div className={styles.metaRow}>
               <span className={styles.metaLabel}>Clôture</span>
-              <span className={styles.metaValue}>25 septembre 2026</span>
+              <span className={styles.metaValue}>15 septembre 2026</span>
             </div>
           </div>
         </div>
