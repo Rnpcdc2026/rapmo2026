@@ -46,11 +46,21 @@ export default async function HomePage() {
               d'ateliers, visites et tables rondes.
             </p>
             <Link href="/inscription" className={styles.ctaPrimary}>
-              S'inscrire au séminaire
+              S'inscrire aux rencontres
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M2 8h12M9 3l5 5-5 5" />
               </svg>
             </Link>
+            {event?.registration_deadline && (
+              <p className={styles.ctaDeadline}>
+                Clôture des inscriptions le{' '}
+                {new Date(event.registration_deadline).toLocaleDateString('fr-FR', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })}
+              </p>
+            )}
           </div>
           <div className={styles.heroMeta}>
             <div className={styles.metaRow}>
@@ -63,14 +73,12 @@ export default async function HomePage() {
                 {event?.location || 'Métropole lyonnaise'}
               </span>
             </div>
-            <div className={styles.metaRow}>
-              <span className={styles.metaLabel}>Public</span>
-              <span className={styles.metaValue}>Collaborateurs &amp; filiales</span>
-            </div>
-            <div className={styles.metaRow}>
-              <span className={styles.metaLabel}>Clôture</span>
-              <span className={styles.metaValue}>15 septembre 2026</span>
-            </div>
+            <Link href="/programme" className={styles.ctaSecondary}>
+              Voir le programme
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M2 8h12M9 3l5 5-5 5" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>

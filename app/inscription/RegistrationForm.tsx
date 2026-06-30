@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import type { Event, Visit, Workshop, Entity, Hotel, TransportMode } from '@/lib/types';
 import styles from './inscription.module.css';
@@ -134,7 +133,6 @@ export default function RegistrationForm({
   visitsAvailability,
   prefill,
 }: Props) {
-  const router = useRouter();
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormData>(initialFormData);
   const [submitting, setSubmitting] = useState(false);
@@ -182,9 +180,6 @@ export default function RegistrationForm({
     const errors: { invitee?: string; phone?: string; role?: string } = {};
     if (!selectedInviteeId) {
       errors.invitee = 'Merci de sélectionner votre nom dans la liste ci-dessus.';
-    }
-    if (!form.phone.trim()) {
-      errors.phone = 'Merci de renseigner votre numéro de téléphone.';
     }
     if (!form.role.trim()) {
       errors.role = "Merci d'indiquer votre fonction.";
@@ -362,30 +357,11 @@ export default function RegistrationForm({
     }
   };
 
-  const restart = () => {
-    setForm(initialFormData);
-    setReference(null);
-    setStep(1);
-    router.refresh();
-  };
-
   const fullName = `${form.firstName} ${form.lastName}`.trim();
 
   const SummaryAside = () => (
     <aside className={styles.summary}>
-      <div className={styles.summaryTitle}>Mon inscription</div>
-      <div className={styles.summaryRow}>
-        <span className={styles.summaryLabel}>Participant</span>
-        <span className={`${styles.summaryValue} ${!fullName ? styles.empty : ''}`}>
-          {fullName || 'À renseigner'}
-        </span>
-      </div>
-      <div className={styles.summaryRow}>
-        <span className={styles.summaryLabel}>Entité</span>
-        <span className={`${styles.summaryValue} ${!form.entity ? styles.empty : ''}`}>
-          {form.entity || '—'}
-        </span>
-      </div>
+      <div className={styles.summaryTitle}>RAPMO 2026</div>
       {/* TODO R3.5: row Visite à réécrire (thursdayVisitId + fridayVisitId)
       <div className={styles.summaryRow}>
         <span className={styles.summaryLabel}>Visite</span>
@@ -453,7 +429,7 @@ export default function RegistrationForm({
       </header>
 
       <nav className={styles.progress}>
-        {['Identité', 'Visites lyonnaises', 'Hébergement', 'Confirmation'].map((label, i) => {
+        {['Identité', 'Choix du programme', 'Informations complémentaires', 'Confirmation'].map((label, i) => {
           const stepNum = i + 1;
           const cls =
             step === stepNum
@@ -595,7 +571,7 @@ export default function RegistrationForm({
                     />
                   </div>
                   <div className={styles.field}>
-                    <label>Téléphone <span className={styles.required}>*</span></label>
+                    <label>Téléphone</label>
                     <input
                       type="tel"
                       value={form.phone}
@@ -666,8 +642,7 @@ export default function RegistrationForm({
                     onChange={(e) => update('attends_thursday_morning', e.target.checked)}
                   />
                   <div>
-                    <div className={styles.sessionLabel}>Jeudi 8 octobre — matin</div>
-                    <div className={styles.sessionDesc}>RAPMO + cocktail déjeunatoire au Sucre</div>
+                    <div className={styles.sessionLabel}>Je serai présent.e le 8 octobre matin à la plénière et au cocktail déjeunatoire au Sucre</div>
                   </div>
                 </label>
 
@@ -678,8 +653,7 @@ export default function RegistrationForm({
                     onChange={(e) => update('attends_thursday_afternoon', e.target.checked)}
                   />
                   <div>
-                    <div className={styles.sessionLabel}>Jeudi 8 octobre — après-midi</div>
-                    <div className={styles.sessionDesc}>Visites des sites CDC Habitat</div>
+                    <div className={styles.sessionLabel}>Je souhaite m&apos;inscrire aux visites de patrimoine du 8 après-midi</div>
                   </div>
                 </label>
 
@@ -690,8 +664,7 @@ export default function RegistrationForm({
                     onChange={(e) => update('attends_thursday_evening', e.target.checked)}
                   />
                   <div>
-                    <div className={styles.sessionLabel}>Jeudi 8 octobre — soir</div>
-                    <div className={styles.sessionDesc}>Dîner de gala au Selcius</div>
+                    <div className={styles.sessionLabel}>Je serai présent.e au dîner du 8 octobre au Selcius</div>
                   </div>
                 </label>
 
@@ -702,8 +675,7 @@ export default function RegistrationForm({
                     onChange={(e) => update('attends_friday_morning', e.target.checked)}
                   />
                   <div>
-                    <div className={styles.sessionLabel}>Vendredi 9 octobre — matin</div>
-                    <div className={styles.sessionDesc}>Ateliers thématiques, plénière et cocktail</div>
+                    <div className={styles.sessionLabel}>Je serai présent.e le 9 octobre matin aux conférences interactives et au cocktail déjeunatoire au Sucre</div>
                   </div>
                 </label>
 
@@ -714,8 +686,7 @@ export default function RegistrationForm({
                     onChange={(e) => update('attends_friday_afternoon', e.target.checked)}
                   />
                   <div>
-                    <div className={styles.sessionLabel}>Vendredi 9 octobre — après-midi</div>
-                    <div className={styles.sessionDesc}>Visites culturelles à Lyon</div>
+                    <div className={styles.sessionLabel}>Je souhaite m&apos;inscrire aux visites culturelles du 9 après-midi</div>
                   </div>
                 </label>
               </div>
@@ -1138,12 +1109,6 @@ export default function RegistrationForm({
                 <span className={styles.confirmLabel}>Référence</span>
                 <span className={styles.confirmValue}>{reference}</span>
               </div>
-            </div>
-
-            <div style={{ marginTop: 40 }}>
-              <button className={styles.btnGhost} onClick={restart}>
-                Inscrire un autre participant
-              </button>
             </div>
           </div>
         )}
