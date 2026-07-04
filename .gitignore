@@ -19,3 +19,7 @@ out/
 tsconfig.tsbuildinfo
 yarn-debug.log*
 yarn-error.log*
+# fichiers temporaires images (traitement)
+public/visits/_new-*.jpg
+# config locale Claude
+.claude/

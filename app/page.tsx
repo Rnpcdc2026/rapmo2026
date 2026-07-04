@@ -88,6 +88,15 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section className={styles.illustration}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/home-confluence.jpg"
+          alt="Le quartier de la Confluence à Lyon, entre Rhône et Saône"
+          className={styles.illustrationImg}
+        />
+      </section>
+
       <footer className={styles.footer}>
         <span>CDC Habitat — GIE Expertise &amp; Support · Référence DPG-SMO-2026-01</span>
         <span>

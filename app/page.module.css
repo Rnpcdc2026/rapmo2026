@@ -196,6 +196,19 @@
   color: var(--ink-strong);
 }
 
+.illustration {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px 64px;
+}
+.illustrationImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
 .footer {
   border-top: 1px solid var(--cdc-gray-light);
   padding: 28px 48px;
