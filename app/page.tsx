@@ -36,14 +36,19 @@ export default async function HomePage() {
           <div>
             <div className={styles.eyebrow}>Inscription ouverte</div>
             <h1 className={styles.title}>
-              Deux jours pour bâtir
-              <br />
-              <span className={styles.titleAccent}>ensemble le patrimoine.</span>
+              Rencontres Annuelles Patrimoine &amp;{' '}
+              <span className={styles.titleAccent}>Maîtrise d&apos;ouvrage 2026</span>
             </h1>
+            <p className={styles.subtitle}>
+              Satisfaction client et transition climatique : relever collectivement ces défis
+            </p>
             <p className={styles.lede}>
-              Retrouvez 150 à 200 collaborateurs CDC Habitat à Lyon pour partager la
-              stratégie Groupe, échanger sur nos métiers et créer du lien autour
-              d'ateliers, visites et tables rondes.
+              Les Rencontres Annuelles Patrimoine et Maîtrise d&apos;Ouvrage se tiendront à Lyon
+              Confluence, les jeudi 8 et vendredi 9 octobre 2026. Deux jours pour se retrouver et
+              partager autour de la Démarche Qualité Maintenance et du Plan Stratégique Climat. Deux
+              jours rythmés par des échanges, des conférences interactives et des visites inspirantes
+              de patrimoine et de sites culturels lyonnais. Au cœur de ces rencontres, une ambition :
+              améliorer durablement la qualité des logements et le cadre de vie des résidences.
             </p>
             <Link href="/inscription" className={styles.ctaPrimary}>
               S'inscrire aux rencontres

@@ -11,6 +11,7 @@ type Invitee = {
   last_name: string;
   email: string;
   entity: string;
+  filiere?: string | null;
 };
 
 type Props = {
@@ -128,9 +129,11 @@ const TRANSPORT_OPTIONS: { value: TransportMode; label: string }[] = [
 const normalizeStr = (s: string) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-// Affichage « NOM Prénom — Entité » (nom de famille en premier)
+// Affichage « NOM Prénom — Entité · Filière » (nom de famille en premier)
 const formatInviteeLabel = (inv: Invitee) =>
-  `${inv.last_name.toUpperCase()} ${inv.first_name} — ${inv.entity}`;
+  `${inv.last_name.toUpperCase()} ${inv.first_name} — ${inv.entity}${
+    inv.filiere ? ` · ${inv.filiere}` : ''
+  }`;
 
 export default function RegistrationForm({
   event,
@@ -177,9 +180,9 @@ export default function RegistrationForm({
   // Filtrage live selon la saisie (Bloc D2)
   const filteredInvitees = inviteeQuery.trim()
     ? sortedInvitees.filter((inv) =>
-        normalizeStr(`${inv.last_name} ${inv.first_name} ${inv.entity}`).includes(
-          normalizeStr(inviteeQuery)
-        )
+        normalizeStr(
+          `${inv.last_name} ${inv.first_name} ${inv.entity} ${inv.filiere ?? ''}`
+        ).includes(normalizeStr(inviteeQuery))
       )
     : sortedInvitees;
 
@@ -193,9 +196,6 @@ export default function RegistrationForm({
 
   const getVisitTitle = (id: string) => visits.find((v) => v.id === id)?.title ?? '';
   const getWorkshopTitle = (id: string) => workshops.find((w) => w.id === id)?.title ?? '';
-  const getHotelName = (id: string | null) => hotels.find((h) => h.id === id)?.title ?? '';
-  const getTransportLabel = (mode: TransportMode | null) =>
-    TRANSPORT_OPTIONS.find((o) => o.value === mode)?.label ?? '';
 
   const update =<K extends keyof FormData>(key: K, value: FormData[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -1108,34 +1108,20 @@ export default function RegistrationForm({
                 )}
               </div>
 
-              {/* Bloc Logistique */}
+              {/* Bloc Régime alimentaire (hébergement + transport retirés du récap — demande Nadia) */}
               <div className={styles.recapBlock}>
                 <div className={styles.recapBlockHeader}>
-                  <h3>Logistique</h3>
+                  <h3>Régime alimentaire</h3>
                   <button className={styles.recapEditButton} onClick={() => setStep(3)}>
                     Modifier
                   </button>
                 </div>
-                {form.diet && (
-                  <div className={styles.recapRow}>
-                    <span className={styles.recapLabel}>Régime alimentaire</span>
-                    <span className={styles.recapValue}>{form.diet}</span>
-                  </div>
-                )}
-                {form.hotelId && (
-                  <div className={styles.recapRow}>
-                    <span className={styles.recapLabel}>Hébergement</span>
-                    <span className={styles.recapValue}>{getHotelName(form.hotelId)}</span>
-                  </div>
-                )}
-                {form.transportMode && (
-                  <div className={styles.recapRow}>
-                    <span className={styles.recapLabel}>Transport</span>
-                    <span className={styles.recapValue}>
-                      {getTransportLabel(form.transportMode)}
-                    </span>
-                  </div>
-                )}
+                <div className={styles.recapRow}>
+                  <span className={styles.recapLabel}>Régime alimentaire</span>
+                  <span className={styles.recapValue}>
+                    {form.diet || 'Sans régime particulier'}
+                  </span>
+                </div>
               </div>
 
               <p className={styles.rgpdNotice}>
@@ -1177,7 +1163,7 @@ export default function RegistrationForm({
             <h2>Inscription confirmée.</h2>
             <p>
               Un email récapitulatif vient de vous être envoyé à <strong>{form.email}</strong>.
-              Vous recevrez le programme détaillé et les informations pratiques début septembre.
+              Vous recevrez le programme détaillé et les informations pratiques en septembre.
             </p>
 
             <div className={styles.confirmRecap}>

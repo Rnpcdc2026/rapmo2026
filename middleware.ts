@@ -46,26 +46,13 @@ async function supabaseAdminAuth(request: NextRequest) {
   return response;
 }
 
-function cookieAccessGuard(request: NextRequest) {
-  const hasAccess = request.cookies.get('rnp_access')?.value === 'ok';
-  if (hasAccess) return NextResponse.next({ request });
-
-  const from = request.nextUrl.pathname + request.nextUrl.search;
-  const url = request.nextUrl.clone();
-  url.pathname = '/login';
-  url.search = `?from=${encodeURIComponent(from)}`;
-  return NextResponse.redirect(url);
-}
-
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Code d'accès public retiré (demande Eric) — la plateforme est publique.
+  // Seul le back-office admin reste protégé.
   if (pathname.startsWith('/admin')) {
     return supabaseAdminAuth(request);
-  }
-
-  if (pathname === '/' || pathname.startsWith('/inscription') || pathname.startsWith('/programme')) {
-    return cookieAccessGuard(request);
   }
 
   return NextResponse.next();

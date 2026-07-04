@@ -75,7 +75,7 @@ export default function ConfirmationEmail({
             <Text style={lede}>
               Votre inscription à <strong>{eventTitle}</strong> est bien enregistrée. Nous sommes ravis
               de vous compter parmi nous pour ces deux journées d&apos;échanges et de rencontres. Vous
-              recevrez le programme détaillé et les informations pratiques début septembre.
+              recevrez le programme détaillé et les informations pratiques en septembre.
             </Text>
           </Section>
 
@@ -88,8 +88,6 @@ export default function ConfirmationEmail({
             {thursdayVisit && <Row label="Visite du jeudi" value={thursdayVisit} />}
             {workshops.length > 0 && <RowList label="Ateliers du vendredi matin" items={workshops} />}
             {fridayVisit && <Row label="Visite du vendredi" value={fridayVisit} />}
-            <Row label="Hébergement" value={hotelName} />
-            <Row label="Transport" value={transportLabel} />
             {diet && <Row label="Régime alimentaire" value={diet} />}
           </Section>
 

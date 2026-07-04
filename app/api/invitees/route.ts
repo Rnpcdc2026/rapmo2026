@@ -1,11 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 
-export async function GET(req: NextRequest) {
-  if (req.cookies.get('rnp_access')?.value !== 'ok') {
-    return NextResponse.json({ error: 'Non autorisé.' }, { status: 401 });
-  }
-
+export async function GET() {
   const supabase = createAdminClient();
 
   const { data: event } = await supabase
@@ -20,7 +16,7 @@ export async function GET(req: NextRequest) {
 
   const { data: invitees, error } = await supabase
     .from('invitations')
-    .select('id, first_name, last_name, email, entity')
+    .select('id, first_name, last_name, email, entity, filiere')
     .eq('event_id', event.id)
     .eq('registered', false)
     .order('last_name');
