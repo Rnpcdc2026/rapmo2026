@@ -24,6 +24,12 @@ const patrimoineVisits = [
   },
 ];
 
+const culturalVisits = [
+  { img: '/visits/visite-musee-confluences.jpg', title: 'Visite du Musée des Confluences' },
+  { img: '/visits/visite-saint-jean-unesco.jpg', title: 'Visite du quartier Saint-Jean' },
+  { img: '/visits/visite-festival-airt-famille.jpg', title: 'Festival Airt de Famille' },
+];
+
 const conferences = [
   {
     title: 'Autour du spectacle « Sous le même toit » : prolongez l’expérience !',
@@ -210,6 +216,24 @@ export default function ProgrammePage() {
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitle}>{c.title}</h3>
                   <p className={styles.cardDesc}>{c.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <hr className={styles.separator} />
+
+        {/* Les visites culturelles — cartes */}
+        <section className={styles.day}>
+          <h2 className={styles.blockTitle}>Les visites culturelles</h2>
+          <div className={styles.cardGrid}>
+            {culturalVisits.map((v) => (
+              <article key={v.title} className={styles.card}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={v.img} alt={v.title} className={styles.cardImg} />
+                <div className={styles.cardBody}>
+                  <h3 className={styles.cardTitle}>{v.title}</h3>
                 </div>
               </article>
             ))}
