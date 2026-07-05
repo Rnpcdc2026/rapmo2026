@@ -97,10 +97,109 @@
   margin: 0 0 24px 0;
 }
 
-.slotSpeaker {
+/* ── Timeline (déroulé horaire) ── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid #F1F1EE;
+}
+.row:last-child {
+  border-bottom: none;
+}
+
+.time {
+  flex: none;
+  min-width: 58px;
+  text-align: center;
+  background: #FCE1D7;
+  color: #B91818;
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-top: 1px;
+}
+
+.rowTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d1d1b;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.rowSub {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #828485;
+  line-height: 1.5;
+  margin: 4px 0 0 0;
+}
+
+.rowList {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: #828485;
+  color: #4C4C4B;
+  line-height: 1.6;
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+}
+.rowList li {
+  margin-bottom: 3px;
+}
+.rowList li::marker {
+  color: #E30613;
+}
+
+/* ── Cartes (visites & conférences) ── */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid #D6D8D9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cardImg {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: 16px 18px;
+}
+
+.cardTitle {
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d1d1b;
+  line-height: 1.3;
+  margin: 0 0 8px 0;
+}
+
+.cardDesc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #4C4C4B;
   line-height: 1.6;
   margin: 0;
 }

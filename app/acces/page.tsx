@@ -30,7 +30,15 @@ export default function AccesPage() {
 
         {/* En train */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>En train</h2>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionIcon}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="5" y="3" width="14" height="13" rx="2" />
+                <path d="M5 11h14M8 16l-2 4M16 16l2 4" />
+              </svg>
+            </span>
+            En train
+          </h2>
           <p className={styles.text}>
             Lyon compte trois gares TGV. Privilégiez <strong>Lyon-Perrache</strong>, la plus proche du Sucre.
           </p>
@@ -52,7 +60,15 @@ export default function AccesPage() {
 
         {/* En avion */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>En avion</h2>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionIcon}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 3L2 10l7 3 3 7z" />
+                <path d="M22 3L11 14" />
+              </svg>
+            </span>
+            En avion
+          </h2>
           <p className={styles.text}>
             L&apos;aéroport <strong>Lyon-Saint-Exupéry (LYS)</strong> est à 35 minutes du Sucre.
           </p>
@@ -85,7 +101,16 @@ export default function AccesPage() {
 
         {/* En voiture */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>En voiture</h2>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionIcon}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 13l1.6-4.6A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.4L21 13v4H3z" />
+                <circle cx="7.5" cy="17" r="1.5" />
+                <circle cx="16.5" cy="17" r="1.5" />
+              </svg>
+            </span>
+            En voiture
+          </h2>
           <p className={styles.text}>
             Le carrefour autoroutier de Lyon relie :{' '}
             <strong>Paris (A6), Marseille-Méditerranée (A7), Genève (A42), les Alpes et l&apos;Italie (A43)</strong>.
@@ -105,7 +130,15 @@ export default function AccesPage() {
 
         {/* En transports en commun */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>En transports en commun (depuis Lyon)</h2>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionIcon}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="4" y="4" width="16" height="12" rx="2" />
+                <path d="M4 11h16M7 16v2M17 16v2" />
+              </svg>
+            </span>
+            En transports en commun (depuis Lyon)
+          </h2>
           <ul className={styles.list}>
             <li>
               <strong>Tramway T1 et T2</strong> — arrêt{' '}
@@ -119,7 +152,17 @@ export default function AccesPage() {
 
         {/* En taxi */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>En taxi</h2>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionIcon}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 13l1.6-4.6A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.4L21 13v4H3z" />
+                <circle cx="7.5" cy="17" r="1.5" />
+                <circle cx="16.5" cy="17" r="1.5" />
+                <rect x="9.5" y="3" width="5" height="2.2" rx="0.5" />
+              </svg>
+            </span>
+            En taxi
+          </h2>
           <p className={styles.text}>Principales centrales lyonnaises :</p>
           <ul className={styles.list}>
             <li><strong>Radio Taxi</strong> : 04 72 10 86 86</li>

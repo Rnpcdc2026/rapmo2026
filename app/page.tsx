@@ -67,34 +67,36 @@ export default async function HomePage() {
               </p>
             )}
           </div>
-          <div className={styles.heroMeta}>
-            <div className={styles.metaRow}>
-              <span className={styles.metaLabel}>Dates</span>
-              <span className={styles.metaValue}>08 — 09 octobre 2026</span>
-            </div>
-            <div className={styles.metaRow}>
-              <span className={styles.metaLabel}>Lieu</span>
-              <span className={styles.metaValue}>
-                {event?.location || 'Métropole lyonnaise'}
-              </span>
-            </div>
-            <Link href="/programme" className={styles.ctaSecondary}>
-              Voir le programme
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M2 8h12M9 3l5 5-5 5" />
-              </svg>
-            </Link>
+          <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/home-confluence.jpg"
+              alt="Le quartier de la Confluence à Lyon, entre Rhône et Saône"
+              className={styles.heroImage}
+            />
           </div>
         </div>
       </section>
 
-      <section className={styles.illustration}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/home-confluence.jpg"
-          alt="Le quartier de la Confluence à Lyon, entre Rhône et Saône"
-          className={styles.illustrationImg}
-        />
+      <section className={styles.metaStrip}>
+        <div className={styles.metaStripInner}>
+          <div className={styles.metaItem}>
+            <span className={styles.metaLabel}>Dates</span>
+            <span className={styles.metaValue}>08 — 09 octobre 2026</span>
+          </div>
+          <div className={styles.metaItem}>
+            <span className={styles.metaLabel}>Lieu</span>
+            <span className={styles.metaValue}>
+              {event?.location || 'Métropole lyonnaise'}
+            </span>
+          </div>
+          <Link href="/programme" className={`${styles.ctaSecondary} ${styles.metaCta}`}>
+            Voir le programme
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M2 8h12M9 3l5 5-5 5" />
+            </svg>
+          </Link>
+        </div>
       </section>
 
       <footer className={styles.footer}>
