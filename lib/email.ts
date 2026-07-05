@@ -147,6 +147,7 @@ export async function sendConfirmationEmail(params: {
         hotelName,
         transportLabel,
         diet: registration.diet || null,
+        allergies: registration.allergies || null,
         contactEmail: event.contact_email || 'contact@cdc-habitat.fr',
         appUrl: APP_URL,
       })

@@ -84,7 +84,8 @@ create table if not exists registrations (
   entity text,
   role text,
   diet text,
-  
+  allergies text,
+
   -- Choix
   visit_id uuid references visits(id) on delete set null,
   bus_transport boolean default false,

@@ -11,8 +11,9 @@ interface RegisterPayload {
   entity: string;
   role: string;
   diet?: string;
-  hotelId: string;
-  transportMode: string;
+  allergies?: string;
+  hotelId?: string | null;
+  transportMode?: string | null;
   attends_thursday_morning: boolean;
   attends_thursday_afternoon: boolean;
   attends_thursday_evening: boolean;
@@ -31,10 +32,10 @@ function validatePayload(body: RegisterPayload): string | null {
   if (!body.lastName?.trim()) return 'Nom manquant.';
   if (!body.entity?.trim()) return 'Entité manquante.';
   if (!body.role?.trim()) return 'Fonction manquante.';
-  if (!['train', 'plane', 'car', 'public_or_walk'].includes(body.transportMode)) {
+  if (body.transportMode && !['train', 'plane', 'car', 'public_or_walk'].includes(body.transportMode)) {
     return 'Mode de transport invalide.';
   }
-  if (!body.hotelId?.trim()) return 'Hôtel manquant.';
+  if (!body.diet?.trim()) return 'Régime alimentaire manquant.';
   const anyPresence =
     body.attends_thursday_morning ||
     body.attends_thursday_afternoon ||
@@ -82,12 +83,13 @@ export async function POST(req: NextRequest) {
         p_email: body.email.trim().toLowerCase(),
         p_first_name: body.firstName.trim(),
         p_last_name: body.lastName.trim(),
-        p_phone: body.phone.trim(),
+        p_phone: body.phone?.trim() || null,
         p_entity: body.entity.trim(),
         p_role: body.role.trim(),
         p_diet: body.diet?.trim() || null,
-        p_hotel_id: body.hotelId,
-        p_transport_mode: body.transportMode,
+        p_allergies: body.allergies?.trim() || null,
+        p_hotel_id: body.hotelId || null,
+        p_transport_mode: body.transportMode || null,
         p_attends_thu_morning: body.attends_thursday_morning,
         p_attends_thu_afternoon: body.attends_thursday_afternoon,
         p_attends_thu_evening: body.attends_thursday_evening,

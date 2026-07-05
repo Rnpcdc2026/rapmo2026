@@ -37,6 +37,7 @@ type FormData = {
   entity: string;
   role: string;
   diet: string;
+  allergies: string;
   attends_thursday_morning: boolean;
   attends_thursday_afternoon: boolean;
   attends_thursday_evening: boolean;
@@ -57,6 +58,7 @@ const initialFormData: FormData = {
   entity: '',
   role: '',
   diet: '',
+  allergies: '',
   attends_thursday_morning: false,
   attends_thursday_afternoon: false,
   attends_thursday_evening: false,
@@ -125,6 +127,14 @@ const TRANSPORT_OPTIONS: { value: TransportMode; label: string }[] = [
   { value: 'public_or_walk', label: 'Transport en commun / à pied' },
 ];
 
+const DIET_OPTIONS = [
+  'Sans régime particulier',
+  'Végétarien (sans viande ni poisson)',
+  'Végan',
+  'Pescétarien',
+  'Sans porc',
+];
+
 // Normalise une chaîne pour la recherche (sans accents, minuscules)
 const normalizeStr = (s: string) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -163,8 +173,7 @@ export default function RegistrationForm({
     fridayVisit?: string;
   }>({});
   const [step3Errors, setStep3Errors] = useState<{
-    hotel?: string;
-    transport?: string;
+    diet?: string;
   }>({});
 
   const thursdayVisits = visits.filter((v) => v.slot_label === 'jeudi-aprem');
@@ -237,11 +246,8 @@ export default function RegistrationForm({
 
   const validateStep3 = () => {
     const errors: typeof step3Errors = {};
-    if (!form.hotelId) {
-      errors.hotel = 'Merci de sélectionner un hôtel.';
-    }
-    if (!form.transportMode) {
-      errors.transport = "Merci d'indiquer votre mode de transport.";
+    if (!form.diet) {
+      errors.diet = 'Merci d’indiquer votre régime alimentaire.';
     }
     return errors;
   };
@@ -901,37 +907,53 @@ export default function RegistrationForm({
           <div className={styles.stepPanel}>
             <div>
               <div className={styles.panelIntro}>
-                <h2>Logistique.</h2>
-                <p>
-                  Indiquez vos préférences d&apos;hébergement et de transport afin que nous
-                  puissions organiser au mieux votre venue.
-                </p>
+                <h2>Informations complémentaires.</h2>
               </div>
 
-              {/* Régime alimentaire */}
+              {/* Régime alimentaire — obligatoire */}
               <div className={styles.logisticSection}>
-                <h3 className={styles.logisticSectionTitle}>Régime alimentaire</h3>
-                <p className={styles.fieldHelp}>
-                  Indiquez vos contraintes ou préférences (végétarien, vegan, allergies,
-                  intolérances…). Laissez vide si aucune.
-                </p>
-                <textarea
-                  className={styles.textareaField}
+                <h3 className={styles.logisticSectionTitle}>
+                  Régime alimentaire <span className={styles.required}>*</span>
+                </h3>
+                <select
+                  className={styles.selectField}
                   value={form.diet}
                   onChange={(e) => update('diet', e.target.value)}
+                >
+                  <option value="">— Sélectionnez votre régime —</option>
+                  {DIET_OPTIONS.map((d) => (
+                    <option key={d} value={d}>{d}</option>
+                  ))}
+                </select>
+                {step3Errors.diet && (
+                  <p className={styles.errorMessage}>{step3Errors.diet}</p>
+                )}
+              </div>
+
+              {/* Allergies / intolérances / remarques */}
+              <div className={styles.logisticSection}>
+                <h3 className={styles.logisticSectionTitle}>
+                  Allergies, intolérances ou remarques{' '}
+                  <span style={{ fontWeight: 400, fontSize: 13, color: '#828485' }}>(facultatif)</span>
+                </h3>
+                <textarea
+                  className={styles.textareaField}
+                  value={form.allergies}
+                  onChange={(e) => update('allergies', e.target.value)}
                   rows={3}
-                  placeholder="Ex. Végétarien, allergie aux fruits à coque"
+                  placeholder="Ex. allergie aux fruits à coque, sans lactose…"
                 />
               </div>
 
-              {/* Hébergement */}
+              {/* Hébergement — facultatif */}
               <div className={styles.logisticSection}>
-                <h3 className={styles.logisticSectionTitle}>Hébergement</h3>
+                <h3 className={styles.logisticSectionTitle}>
+                  Hébergement{' '}
+                  <span style={{ fontWeight: 400, fontSize: 13, color: '#828485' }}>(facultatif)</span>
+                </h3>
                 <p className={styles.fieldHelp}>
-                  Indiquez l&apos;hôtel dans lequel vous avez réservé votre hébergement pour
-                  la nuit du jeudi 8 au vendredi 9 octobre. Cette information nous sert
-                  uniquement à la coordination logistique — chaque participant gère sa propre
-                  réservation.
+                  Si vous avez déjà réservé, indiquez votre hôtel pour la nuit du jeudi 8 au
+                  vendredi 9 octobre. Chaque participant gère sa propre réservation.
                 </p>
                 <select
                   className={styles.selectField}
@@ -945,14 +967,14 @@ export default function RegistrationForm({
                     </option>
                   ))}
                 </select>
-                {step3Errors.hotel && (
-                  <p className={styles.errorMessage}>{step3Errors.hotel}</p>
-                )}
               </div>
 
-              {/* Mode de transport */}
+              {/* Mode de transport — facultatif */}
               <div className={styles.logisticSection}>
-                <h3 className={styles.logisticSectionTitle}>Mode de transport</h3>
+                <h3 className={styles.logisticSectionTitle}>
+                  Mode de transport{' '}
+                  <span style={{ fontWeight: 400, fontSize: 13, color: '#828485' }}>(facultatif)</span>
+                </h3>
                 <p className={styles.fieldHelp}>Comment comptez-vous rejoindre Lyon ?</p>
                 <div className={styles.sessionList}>
                   {TRANSPORT_OPTIONS.map(({ value, label }) => (
@@ -975,9 +997,6 @@ export default function RegistrationForm({
                     </label>
                   ))}
                 </div>
-                {step3Errors.transport && (
-                  <p className={styles.errorMessage}>{step3Errors.transport}</p>
-                )}
               </div>
             </div>
 
@@ -1122,6 +1141,12 @@ export default function RegistrationForm({
                     {form.diet || 'Sans régime particulier'}
                   </span>
                 </div>
+                {form.allergies && (
+                  <div className={styles.recapRow}>
+                    <span className={styles.recapLabel}>Allergies / remarques</span>
+                    <span className={styles.recapValue}>{form.allergies}</span>
+                  </div>
+                )}
               </div>
 
               <p className={styles.rgpdNotice}>

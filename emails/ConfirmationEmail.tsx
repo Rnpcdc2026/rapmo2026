@@ -27,6 +27,7 @@ type Props = {
   hotelName: string;
   transportLabel: string;
   diet?: string | null;
+  allergies?: string | null;
   contactEmail: string;
   appUrl: string;
 };
@@ -44,6 +45,7 @@ export default function ConfirmationEmail({
   hotelName,
   transportLabel,
   diet,
+  allergies,
   contactEmail,
   appUrl,
 }: Props) {
@@ -89,6 +91,7 @@ export default function ConfirmationEmail({
             {workshops.length > 0 && <RowList label="Ateliers du vendredi matin" items={workshops} />}
             {fridayVisit && <Row label="Visite du vendredi" value={fridayVisit} />}
             {diet && <Row label="Régime alimentaire" value={diet} />}
+            {allergies && <Row label="Allergies / remarques" value={allergies} />}
           </Section>
 
           <Section style={ctaWrapper}>
