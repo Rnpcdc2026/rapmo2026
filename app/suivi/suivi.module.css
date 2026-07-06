@@ -1,0 +1,159 @@
+.page {
+  min-height: 100vh;
+  background: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  color: #4C4C4B;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: 1px solid #D6D8D9;
+}
+.logo { height: 44px; width: auto; object-fit: contain; }
+.headerTitle { font-size: 13px; color: #828485; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.pageTitle {
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1d1d1b;
+  margin: 0 0 4px 0;
+}
+.subtitle { font-size: 15px; color: #828485; margin: 0 0 28px 0; }
+
+/* Barre d'actions */
+.actionsBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.count {
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d1d1b;
+}
+.exportBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  background: #E30613;
+  color: #fff;
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 11px 20px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.exportBtn:hover { background: #B91818; }
+.exportBtn svg { width: 15px; height: 15px; }
+
+/* Tableau */
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid #D6D8D9;
+  border-radius: 10px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.table th {
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #828485;
+  font-weight: 600;
+  padding: 12px 14px;
+  background: #F7F7F5;
+  border-bottom: 1px solid #D6D8D9;
+  position: sticky;
+  top: 0;
+}
+.table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid #ECECEC;
+  color: #4C4C4B;
+}
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: #FCFAF9; }
+.ref { font-weight: 600; color: #B91818; }
+
+.empty {
+  padding: 48px;
+  text-align: center;
+  color: #828485;
+  font-size: 15px;
+}
+
+/* Écran mot de passe */
+.gate {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.gateCard {
+  width: 100%;
+  max-width: 380px;
+  border: 1px solid #D6D8D9;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+}
+.gateTitle {
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1d1d1b;
+  margin: 0 0 6px 0;
+}
+.gateText { font-size: 14px; color: #828485; margin: 0 0 22px 0; }
+.gateInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #D6D8D9;
+  border-radius: 6px;
+  font-size: 15px;
+  margin-bottom: 14px;
+  box-sizing: border-box;
+}
+.gateInput:focus { outline: none; border-color: #E30613; }
+.gateBtn {
+  width: 100%;
+  background: #E30613;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.gateBtn:hover { background: #B91818; }
+.gateError {
+  font-size: 13px;
+  color: #E30613;
+  margin: 0 0 14px 0;
+}
