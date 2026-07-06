@@ -21,5 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 # fichiers temporaires images (traitement)
 public/visits/_new-*.jpg
+public/BD_ZAC_*.jpg
 # config locale Claude
 .claude/

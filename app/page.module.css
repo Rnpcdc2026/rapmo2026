@@ -203,6 +203,14 @@
   object-fit: cover;
   border-radius: 10px;
 }
+.heroImageCredit {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--cdc-gray);
+  text-align: right;
+  margin: 8px 0 0 0;
+}
 
 .metaStrip {
   border-top: 1px solid var(--cdc-gray-light);

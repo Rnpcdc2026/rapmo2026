@@ -215,6 +215,14 @@
   margin: 0;
 }
 
+.cardCredit {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #828485;
+  margin: 10px 0 0 0;
+}
+
 .slot {
   margin-bottom: 32px;
   padding-left: 20px;

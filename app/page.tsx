@@ -47,8 +47,7 @@ export default async function HomePage() {
               Confluence, les jeudi 8 et vendredi 9 octobre 2026. Deux jours pour se retrouver et
               partager autour de la Démarche Qualité Maintenance et du Plan Stratégique Climat. Deux
               jours rythmés par des échanges, des conférences interactives et des visites inspirantes
-              de patrimoine et de sites culturels lyonnais. Au cœur de ces rencontres, une ambition :
-              améliorer durablement la qualité des logements et le cadre de vie des résidences.
+              de patrimoine et de sites culturels lyonnais.
             </p>
             <Link href="/inscription" className={styles.ctaPrimary}>
               S'inscrire aux rencontres
@@ -70,10 +69,11 @@ export default async function HomePage() {
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/home-confluence.jpg"
-              alt="Le quartier de la Confluence à Lyon, entre Rhône et Saône"
+              src="/home-girondins.jpg"
+              alt="La ZAC des Girondins à Lyon"
               className={styles.heroImage}
             />
+            <p className={styles.heroImageCredit}>© Eva Sanchez</p>
           </div>
         </div>
       </section>

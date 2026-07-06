@@ -6,21 +6,25 @@ const patrimoineVisits = [
     img: '/visits/visite-confluence-spl.jpg',
     title: 'Entre Rhône et Saône, le quartier de Confluence',
     desc: "D'ancienne friche industrielle à quartier futuriste et audacieux, le quartier de la Confluence dévoile un nouveau visage de la ville.",
+    credit: '',
   },
   {
     img: '/visits/visite-saint-priest.jpg',
     title: "À Saint-Priest, la nouvelle vie de la rue de l'Industrie",
     desc: 'Vaste projet mêlant réhabilitation, construction neuve et aménagement, pensé sous deux axes majeurs : réemploi de matériaux et végétalisation.',
+    credit: '© Architecte AA Group',
   },
   {
     img: '/visits/visite-gratte-ciel-nord.jpg',
     title: 'Gratte-ciel Nord – SERL – Villeurbanne',
     desc: "Un projet d'aménagement à la fois prolongement et hommage au centre historique de Villeurbanne, les Gratte-Ciel.",
+    credit: '© COGEDIM',
   },
   {
     img: '/visits/visite-pierre-taille-mariniers.jpg',
     title: "Visites d'opérations autour de la thématique des matériaux biosourcés",
     desc: 'À la découverte de deux opérations : opération en pierre de taille (SACVL) et structure bois (Albizzia).',
+    credit: '',
   },
 ];
 
@@ -199,6 +203,7 @@ export default function ProgrammePage() {
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitle}>{v.title}</h3>
                   <p className={styles.cardDesc}>{v.desc}</p>
+                  {v.credit && <p className={styles.cardCredit}>{v.credit}</p>}
                 </div>
               </article>
             ))}

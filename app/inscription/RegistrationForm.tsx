@@ -35,6 +35,7 @@ type FormData = {
   email: string;
   phone: string;
   entity: string;
+  filiere: string;
   role: string;
   diet: string;
   allergies: string;
@@ -56,6 +57,7 @@ const initialFormData: FormData = {
   email: '',
   phone: '',
   entity: '',
+  filiere: '',
   role: '',
   diet: '',
   allergies: '',
@@ -139,11 +141,10 @@ const DIET_OPTIONS = [
 const normalizeStr = (s: string) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-// Affichage « NOM Prénom — Entité · Filière » (nom de famille en premier)
+// Affichage « NOM Prénom — Entité » (la filière n'apparaît pas dans le nom, mais
+// dans le champ dédié « Entité / Filière » de l'étape Identité)
 const formatInviteeLabel = (inv: Invitee) =>
-  `${inv.last_name.toUpperCase()} ${inv.first_name} — ${inv.entity}${
-    inv.filiere ? ` · ${inv.filiere}` : ''
-  }`;
+  `${inv.last_name.toUpperCase()} ${inv.first_name} — ${inv.entity}`;
 
 export default function RegistrationForm({
   event,
@@ -284,6 +285,7 @@ export default function RegistrationForm({
       update('lastName', '');
       update('email', '');
       update('entity', '');
+      update('filiere', '');
       return;
     }
     const inv = invitees.find((i) => i.id === id);
@@ -292,6 +294,7 @@ export default function RegistrationForm({
       update('lastName', inv.last_name);
       update('email', inv.email);
       update('entity', inv.entity);
+      update('filiere', inv.filiere ?? '');
     }
   };
 
@@ -672,10 +675,10 @@ export default function RegistrationForm({
                 </div>
                 <div className={styles.fieldGroup}>
                   <div className={styles.field}>
-                    <label>Entité / Filiale <span className={styles.required}>*</span></label>
+                    <label>Entité / Filière <span className={styles.required}>*</span></label>
                     <input
                       type="text"
-                      value={form.entity}
+                      value={form.filiere ? `${form.entity} / ${form.filiere}` : form.entity}
                       readOnly
                       style={selectedInviteeId ? { backgroundColor: '#f5f5f5', cursor: 'not-allowed' } : {}}
                     />
