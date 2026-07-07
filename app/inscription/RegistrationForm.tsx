@@ -80,6 +80,12 @@ type VisitCardProps = {
   onClick: () => void;
 };
 
+// Crédits photos par visite (affichés en légende sous l'image)
+const VISIT_CREDITS: Record<string, string> = {
+  'visite-saint-priest': '© Architecte AA Group',
+  'visite-gratte-ciel-nord': '© COGEDIM',
+};
+
 function VisitCard({ visit, isSelected, remaining, onClick }: VisitCardProps) {
   const [imgError, setImgError] = useState(false);
   const isFull = remaining !== null && remaining <= 0;
@@ -103,6 +109,11 @@ function VisitCard({ visit, isSelected, remaining, onClick }: VisitCardProps) {
         <div className={styles.visitTitle}>{visit.title}</div>
         {visit.description && (
           <div className={styles.visitDesc}>{visit.description}</div>
+        )}
+        {VISIT_CREDITS[visit.code] && (
+          <div style={{ fontSize: 12, fontStyle: 'italic', color: '#828485', marginTop: 6 }}>
+            {VISIT_CREDITS[visit.code]}
+          </div>
         )}
         {remaining !== null && (
           <div className={`${styles.visitCapacity} ${isFull ? styles.visitCapacityFull : ''}`}>

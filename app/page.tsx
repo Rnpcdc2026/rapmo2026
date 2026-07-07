@@ -73,7 +73,6 @@ export default async function HomePage() {
               alt="La ZAC des Girondins à Lyon"
               className={styles.heroImage}
             />
-            <p className={styles.heroImageCredit}>© Eva Sanchez</p>
           </div>
         </div>
       </section>
