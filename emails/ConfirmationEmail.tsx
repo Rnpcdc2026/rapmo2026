@@ -75,7 +75,7 @@ export default function ConfirmationEmail({
               Bonjour {firstName}, à très bientôt à Lyon.
             </Heading>
             <Text style={lede}>
-              Votre inscription à <strong>{eventTitle}</strong> est bien enregistrée. Nous sommes ravis
+              Votre inscription aux <strong>{eventTitle}</strong> est bien enregistrée. Nous sommes ravis
               de vous compter parmi nous pour ces deux journées d&apos;échanges et de rencontres. Vous
               recevrez le programme détaillé et les informations pratiques en septembre.
             </Text>
