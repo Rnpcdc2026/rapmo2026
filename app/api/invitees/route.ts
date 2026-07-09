@@ -1,6 +1,11 @@
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 
+// Toujours interroger la base en direct (sinon la liste est figée au build,
+// et les invités ajoutés / remis à registered=false n'apparaissent pas)
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET() {
   const supabase = createAdminClient();
 
