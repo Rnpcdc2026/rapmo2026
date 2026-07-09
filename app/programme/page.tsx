@@ -83,6 +83,13 @@ export default function ProgrammePage() {
           au cœur de Lyon Confluence.
         </p>
 
+        <a href="/programme-rapmo-2026.pdf" download className={styles.btnDownload}>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M8 2v8M4 7l4 4 4-4M2 13h12" />
+          </svg>
+          Télécharger le programme (PDF)
+        </a>
+
         {/* Jeudi 8 octobre */}
         <section className={styles.day}>
           <h2 className={styles.dayTitle}>Jeudi 8 octobre 2026</h2>

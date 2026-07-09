@@ -67,8 +67,31 @@
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   color: #828485;
-  margin: 0 0 48px 0;
+  margin: 0 0 24px 0;
   line-height: 1.6;
+}
+
+.btnDownload {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #E30613;
+  color: #FFFFFF;
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 4px;
+  margin: 0 0 44px 0;
+  transition: background 0.15s;
+}
+.btnDownload:hover {
+  background: #B91818;
+}
+.btnDownload svg {
+  width: 16px;
+  height: 16px;
 }
 
 .day {
