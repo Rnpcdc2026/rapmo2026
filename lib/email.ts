@@ -278,7 +278,7 @@ export async function sendReminderEmail(params: {
         contactEmail: event.contact_email || 'contact@cdc-habitat.fr',
       })
     );
-    const subject = `⏳ Relance — ${event.title}, clôture le ${formatDeadline(event.registration_deadline)}`;
+    const subject = `Pensez à vous inscrire — ${event.title}`;
 
     const result = await resend.emails.send({ from: FROM, to: invitation.email, replyTo: REPLY_TO, subject, html });
     await supabase.from('invitations').update({

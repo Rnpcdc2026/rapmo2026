@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { fetchRegistrationRows, EXPORT_COLUMNS } from '@/lib/registrations-export';
+import RelanceButton from './RelanceButton';
 import styles from './suivi.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -81,6 +82,7 @@ export default async function SuiviPage({
           <span className={styles.count}>
             {count} inscription{count > 1 ? 's' : ''}
           </span>
+          <RelanceButton />
           <a href="/api/suivi/export" className={styles.exportBtn}>
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M8 2v8M4 7l4 4 4-4M2 13h12" />

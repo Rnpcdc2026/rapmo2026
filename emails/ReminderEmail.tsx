@@ -47,18 +47,18 @@ export default function ReminderEmail({
 
           <Section style={{ padding: '32px' }}>
             <Text style={{ fontFamily: 'Arial, sans-serif', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: '#E30613', fontWeight: 700, margin: 0 }}>
-              ● Relance · Clôture imminente
+              ● Rappel · Inscriptions ouvertes
             </Text>
             <Heading style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontWeight: 800, fontSize: 28, lineHeight: 1.1, color: '#1d1d1b', margin: '16px 0', letterSpacing: '-0.02em' }}>
-              {firstName ? `${firstName}, ne` : 'Ne'} <span style={{ color: '#E30613' }}>tardez plus</span> à vous inscrire.
+              {firstName ? `${firstName}, pensez à vous` : 'Pensez à vous'} <span style={{ color: '#E30613' }}>inscrire</span>.
             </Heading>
             <Text style={{ fontFamily: 'Arial, sans-serif', fontSize: 15, lineHeight: 1.65, color: '#4C4C4B' }}>
-              Nous n'avons pas encore reçu votre confirmation de présence pour{' '}
+              Nous n'avons pas encore reçu votre inscription pour{' '}
               <strong>{eventTitle}</strong>, les <strong>{eventDates}</strong>.
             </Text>
             <Text style={{ fontFamily: 'Arial, sans-serif', fontSize: 15, lineHeight: 1.65, color: '#4C4C4B', marginBottom: 32 }}>
-              Les inscriptions ferment le <strong>{deadline}</strong>. Quelques minutes
-              suffisent pour réserver votre place, votre visite et votre hébergement.
+              Vous avez jusqu'au <strong>{deadline}</strong> pour confirmer votre présence.
+              Quelques minutes suffisent pour choisir votre programme et vos visites.
             </Text>
 
             <Section style={{ textAlign: 'center', margin: '32px 0' }}>
