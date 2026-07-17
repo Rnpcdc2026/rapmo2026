@@ -5,6 +5,7 @@ import {
   Head,
   Heading,
   Html,
+  Img,
   Preview,
   Section,
   Text,
@@ -31,16 +32,19 @@ export default function ReminderEmail({
   return (
     <Html>
       <Head />
-      <Preview>⏳ Plus que quelques jours pour confirmer votre présence à la {eventTitle}</Preview>
+      <Preview>Pensez à confirmer votre présence à {eventTitle}</Preview>
       <Body style={{ backgroundColor: '#ECECEC', fontFamily: 'Arial, sans-serif', margin: 0, padding: '20px 0' }}>
         <Container style={{ maxWidth: 580, margin: '0 auto', backgroundColor: '#FFFFFF', borderRadius: 4, overflow: 'hidden' }}>
           <Section style={{ height: 4, backgroundColor: '#E30613', margin: 0 }} />
 
           <Section style={{ padding: '32px 32px 24px', borderBottom: '1px solid #D6D8D9' }}>
-            <Text style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontWeight: 900, fontSize: 20, color: '#E30613', margin: 0, letterSpacing: '-0.02em' }}>
-              cdc <span style={{color: '#1d1d1b'}}>habitat</span>
-            </Text>
-            <Text style={{ fontFamily: 'Arial, sans-serif', fontSize: 12, color: '#828485', margin: '6px 0 0 0', fontWeight: 500 }}>
+            <Img
+              src="https://rnp2026.vercel.app/cdc-habitat-logo.jpg"
+              alt="CDC Habitat"
+              width="140"
+              style={{ display: 'block', margin: 0, height: 'auto' }}
+            />
+            <Text style={{ fontFamily: 'Arial, sans-serif', fontSize: 12, color: '#828485', margin: '12px 0 0 0', fontWeight: 500 }}>
               Rencontres Annuelles Patrimoine et Maîtrise d'Ouvrage 2026
             </Text>
           </Section>
