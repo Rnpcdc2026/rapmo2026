@@ -34,10 +34,11 @@ const culturalVisits = [
   { img: '/visits/visite-festival-airt-famille.jpg', title: 'Festival Airt de Famille' },
 ];
 
-const conferences = [
+const conferences: { title: string; desc: string; video?: string }[] = [
   {
     title: 'Autour du spectacle « Sous le même toit » : prolongez l’expérience !',
     desc: "Atelier d'expression et de mise en situation. Après la représentation du matin, place à la créativité.",
+    video: '/teaser-spectacle.mp4',
   },
   {
     title: 'Optimisation de la programmation de travaux',
@@ -225,7 +226,14 @@ export default function ProgrammePage() {
           <div className={styles.cardGrid}>
             {conferences.map((c) => (
               <article key={c.title} className={styles.card}>
+                {c.video && (
+                  <video className={styles.cardVideo} controls preload="metadata" playsInline>
+                    <source src={c.video} type="video/mp4" />
+                    Votre navigateur ne peut pas lire cette vidéo.
+                  </video>
+                )}
                 <div className={styles.cardBody}>
+                  {c.video && <div className={styles.videoTag}>▶ Teaser du spectacle</div>}
                   <h3 className={styles.cardTitle}>{c.title}</h3>
                   <p className={styles.cardDesc}>{c.desc}</p>
                 </div>

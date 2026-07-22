@@ -246,6 +246,23 @@
   margin: 10px 0 0 0;
 }
 
+.cardVideo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  object-fit: cover;
+}
+
+.videoTag {
+  font-family: 'Anek Latin', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #E30613;
+  margin: 0 0 6px 0;
+}
+
 .slot {
   margin-bottom: 32px;
   padding-left: 20px;
