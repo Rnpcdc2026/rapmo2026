@@ -857,6 +857,17 @@ export default function RegistrationForm({
                                 <div className={styles.visitTitle}>{w.title}</div>
                                 {w.description && <div className={styles.visitDesc}>{w.description}</div>}
                                 {w.speaker && <div className={styles.workshopSpeaker}>{w.speaker}</div>}
+                                {w.code === 'atelier-piece-toit' && (
+                                  <a
+                                    href="/teaser-spectacle.mp4"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.teaserLink}
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    ▶ Voir le teaser du spectacle (1 min)
+                                  </a>
+                                )}
                               </div>
                             </label>
                           );
