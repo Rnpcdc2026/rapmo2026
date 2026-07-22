@@ -48,8 +48,8 @@ const conferences = [
     desc: 'Testez différents scénarios de végétalisation et visualisez leurs bénéfices pour vos projets de réhabilitation.',
   },
   {
-    title: 'Réflexion autour du projet stratégique',
-    desc: "Les grandes orientations étant validées, la phase d'écriture est lancée. Plusieurs axes concernent notre filière patrimoine et maîtrise d'ouvrage. Exprimons-nous !",
+    title: 'Comprendre les orientations stratégiques du Groupe et leurs déclinaisons dans nos métiers',
+    desc: "Le projet stratégique du Groupe entre dans une nouvelle phase de maturation. Cet atelier vise à présenter les principales orientations qui concernent le patrimoine et la maîtrise d'ouvrage, à partager les réflexions déjà engagées au sein de nos filières et à identifier les sujets qui devront être accompagnés dans les années à venir.",
   },
 ];
 
