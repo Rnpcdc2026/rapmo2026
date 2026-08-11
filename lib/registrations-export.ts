@@ -14,6 +14,7 @@ export const EXPORT_COLUMNS = [
   'Email',
   'Téléphone',
   'Entité',
+  'Filière',
   'Fonction',
   'Régime',
   'Allergies',
@@ -29,7 +30,7 @@ export const EXPORT_COLUMNS = [
 export type ExportRow = string[];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function shapeRow(r: any): ExportRow {
+function shapeRow(r: any, filiereMap: Record<string, string>): ExportRow {
   const presence: string[] = [];
   if (r.attends_thursday_morning) presence.push('Jeudi matin');
   if (r.attends_thursday_afternoon) presence.push('Jeudi après-midi');
@@ -58,6 +59,7 @@ function shapeRow(r: any): ExportRow {
     r.email || '',
     r.phone || '',
     r.entity || '',
+    filiereMap[(r.email || '').toLowerCase()] || '',
     r.role || '',
     r.diet || '',
     r.allergies || '',
@@ -87,6 +89,16 @@ export async function fetchRegistrationRows(): Promise<{ rows: ExportRow[]; coun
     .order('created_at', { ascending: false });
 
   if (error || !data) return { rows: [], count: 0 };
-  const rows = data.map(shapeRow);
+
+  // Filière non stockée sur l'inscription → on la récupère depuis les invitations (par email)
+  const { data: invites } = await supabase
+    .from('invitations')
+    .select('email, filiere');
+  const filiereMap: Record<string, string> = {};
+  for (const inv of invites ?? []) {
+    if (inv.email) filiereMap[inv.email.toLowerCase()] = inv.filiere ?? '';
+  }
+
+  const rows = data.map((r) => shapeRow(r, filiereMap));
   return { rows, count: rows.length };
 }
