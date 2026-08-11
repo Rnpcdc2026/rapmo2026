@@ -21,6 +21,7 @@ type Props = {
   entities: Entity[];
   hotels: Hotel[];
   visitsAvailability: Record<string, number>;
+  workshopsAvailability: Record<string, number>;
   prefill?: {
     email?: string;
     firstName?: string;
@@ -164,6 +165,7 @@ export default function RegistrationForm({
   entities,
   hotels,
   visitsAvailability,
+  workshopsAvailability,
   prefill,
 }: Props) {
   const [step, setStep] = useState(1);
@@ -836,7 +838,14 @@ export default function RegistrationForm({
                       <div className={styles.workshopList}>
                         {fridayWorkshops.map((w) => {
                           const isSelected = form.workshopIds.includes(w.id);
-                          const isDisabled = !isSelected && form.workshopIds.length >= 2;
+                          const wsRemaining =
+                            w.capacity < 999
+                              ? (workshopsAvailability[w.id] ?? w.capacity)
+                              : null;
+                          const wsFull =
+                            wsRemaining !== null && wsRemaining <= 0 && !isSelected;
+                          const isDisabled =
+                            !isSelected && (form.workshopIds.length >= 2 || wsFull);
                           return (
                             <label
                               key={w.id}
@@ -845,10 +854,11 @@ export default function RegistrationForm({
                               <input
                                 type="checkbox"
                                 checked={isSelected}
+                                disabled={isDisabled}
                                 onChange={() => {
                                   if (isSelected) {
                                     update('workshopIds', form.workshopIds.filter((id) => id !== w.id));
-                                  } else if (form.workshopIds.length < 2) {
+                                  } else if (form.workshopIds.length < 2 && !wsFull) {
                                     update('workshopIds', [...form.workshopIds, w.id]);
                                   }
                                 }}
@@ -867,6 +877,11 @@ export default function RegistrationForm({
                                   >
                                     ▶ Voir le teaser du spectacle (1 min)
                                   </a>
+                                )}
+                                {wsRemaining !== null && wsRemaining <= 25 && (
+                                  <div className={`${styles.visitCapacity} ${wsRemaining <= 0 ? styles.visitCapacityFull : ''}`}>
+                                    {wsRemaining <= 0 ? 'Complet' : `${wsRemaining} places restantes`}
+                                  </div>
                                 )}
                               </div>
                             </label>

@@ -28,29 +28,36 @@ export default async function InscriptionPage({
     notFound();
   }
 
-  const [visitsRes, workshopsRes, hotelsRes, entitiesRes, registrationVisitsRes] =
-    await Promise.all([
-      supabase
-        .from('visits')
-        .select('*')
-        .eq('event_id', event.id)
-        .eq('is_active', true)
-        .order('display_order'),
-      supabase
-        .from('workshops')
-        .select('*')
-        .eq('event_id', event.id)
-        .eq('is_active', true)
-        .order('display_order'),
-      supabase
-        .from('hotels')
-        .select('*')
-        .eq('event_id', event.id)
-        .eq('is_active', true)
-        .order('display_order'),
-      supabase.from('entities').select('*').order('name'),
-      supabase.from('registration_visits').select('visit_id'),
-    ]);
+  const [
+    visitsRes,
+    workshopsRes,
+    hotelsRes,
+    entitiesRes,
+    registrationVisitsRes,
+    registrationWorkshopsRes,
+  ] = await Promise.all([
+    supabase
+      .from('visits')
+      .select('*')
+      .eq('event_id', event.id)
+      .eq('is_active', true)
+      .order('display_order'),
+    supabase
+      .from('workshops')
+      .select('*')
+      .eq('event_id', event.id)
+      .eq('is_active', true)
+      .order('display_order'),
+    supabase
+      .from('hotels')
+      .select('*')
+      .eq('event_id', event.id)
+      .eq('is_active', true)
+      .order('display_order'),
+    supabase.from('entities').select('*').order('name'),
+    supabase.from('registration_visits').select('visit_id'),
+    supabase.from('registration_workshops').select('workshop_id'),
+  ]);
 
   const visits = visitsRes.data ?? [];
   const visitIdSet = new Set(visits.map((v) => v.id));
@@ -67,14 +74,28 @@ export default async function InscriptionPage({
     visitsAvailability[v.id] = Math.max(0, v.capacity - (occupancy.get(v.id) ?? 0));
   });
 
+  const workshops = workshopsRes.data ?? [];
+  const workshopIdSet = new Set(workshops.map((w) => w.id));
+  const wsOccupancy = new Map<string, number>();
+  for (const rw of registrationWorkshopsRes.data ?? []) {
+    if (workshopIdSet.has(rw.workshop_id)) {
+      wsOccupancy.set(rw.workshop_id, (wsOccupancy.get(rw.workshop_id) ?? 0) + 1);
+    }
+  }
+  const workshopsAvailability: Record<string, number> = {};
+  workshops.forEach((w) => {
+    workshopsAvailability[w.id] = Math.max(0, w.capacity - (wsOccupancy.get(w.id) ?? 0));
+  });
+
   return (
     <RegistrationForm
       event={event}
       visits={visits}
-      workshops={workshopsRes.data ?? []}
+      workshops={workshops}
       entities={entitiesRes.data ?? []}
       hotels={hotelsRes.data ?? []}
       visitsAvailability={visitsAvailability}
+      workshopsAvailability={workshopsAvailability}
       prefill={
         searchParams.email || searchParams.firstName
           ? {

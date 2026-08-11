@@ -112,6 +112,15 @@ export async function POST(req: NextRequest) {
           { status: 409 }
         );
       }
+      if (code === 'P0004') {
+        return NextResponse.json(
+          {
+            error:
+              "Un des ateliers choisis est complet. Veuillez retourner à l'étape précédente et ajuster votre sélection.",
+          },
+          { status: 409 }
+        );
+      }
       if (code === 'P0002') {
         return NextResponse.json(
           {
