@@ -7,6 +7,14 @@ const TRANSPORT_LABELS: Record<string, string> = {
   public_or_walk: 'Transport en commun / à pied',
 };
 
+// Une colonne par atelier (dans l'ordre voulu à l'export), clé stable = code
+const WORKSHOP_COLUMNS: { code: string; label: string }[] = [
+  { code: 'atelier-optimisation-travaux', label: 'Atelier Optimisation travaux' },
+  { code: 'atelier-biodiversite', label: 'Atelier Réhabiliter autrement' },
+  { code: 'atelier-projet-strategique', label: 'Atelier Orientations stratégiques' },
+  { code: 'atelier-piece-toit', label: 'Atelier Autour du spectacle' },
+];
+
 export const EXPORT_COLUMNS = [
   'Référence',
   'Nom',
@@ -23,7 +31,7 @@ export const EXPORT_COLUMNS = [
   'Présence',
   'Visite jeudi',
   'Visite vendredi',
-  'Ateliers',
+  ...WORKSHOP_COLUMNS.map((w) => w.label),
   'Date inscription',
 ];
 
@@ -44,11 +52,16 @@ function shapeRow(r: any, filiereMap: Record<string, string>): ExportRow {
   const thursdayVisit = visits.find((v: any) => v.slot_label === 'jeudi-aprem')?.title || '';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fridayVisit = visits.find((v: any) => v.slot_label === 'vendredi-aprem')?.title || '';
-  const workshops = (r.registration_workshops || [])
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    .map((rw: any) => rw.workshop?.title)
-    .filter(Boolean)
-    .join(' | ');
+  // Codes des ateliers choisis → une colonne par atelier (X si sélectionné)
+  const selectedWorkshopCodes = new Set(
+    (r.registration_workshops || [])
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .map((rw: any) => rw.workshop?.code)
+      .filter(Boolean)
+  );
+  const workshopCells = WORKSHOP_COLUMNS.map((w) =>
+    selectedWorkshopCodes.has(w.code) ? 'X' : ''
+  );
 
   const created = r.created_at ? new Date(r.created_at).toLocaleString('fr-FR') : '';
 
@@ -68,7 +81,7 @@ function shapeRow(r: any, filiereMap: Record<string, string>): ExportRow {
     presence.join(', '),
     thursdayVisit,
     fridayVisit,
-    workshops,
+    ...workshopCells,
     created,
   ];
 }
@@ -84,7 +97,7 @@ export async function fetchRegistrationRows(): Promise<{ rows: ExportRow[]; coun
        attends_friday_morning, attends_friday_afternoon,
        hotel:hotels(title),
        registration_visits ( visit:visits(title, slot_label) ),
-       registration_workshops ( workshop:workshops(title) )`
+       registration_workshops ( workshop:workshops(code, title) )`
     )
     .order('created_at', { ascending: false });
 
