@@ -34,23 +34,27 @@ const culturalVisits = [
   { img: '/visits/visite-festival-airt-famille.jpg', title: 'Festival Airt de Famille' },
 ];
 
-const conferences: { title: string; desc: string; video?: string }[] = [
+const conferences: { title: string; desc: string; lieu: string; video?: string }[] = [
   {
-    title: 'Autour du spectacle « Sous le même toit » : prolongez l’expérience !',
+    title: 'Atelier d’expression et de mise en situation - Autour du spectacle « Sous le même toit »',
     desc: "Atelier d'expression et de mise en situation. Après la représentation du matin, place à la créativité.",
+    lieu: 'Le Sucre',
     video: '/teaser-spectacle.mp4',
-  },
-  {
-    title: 'Optimisation de la programmation de travaux',
-    desc: 'Un an après le lancement de la démarche : cap sur les résultats, les usages du PANORAMA et les idées qui feront évoluer nos pratiques de programmation de travaux.',
-  },
-  {
-    title: 'Réhabiliter autrement : quand la nature devient un levier de performance',
-    desc: 'Testez différents scénarios de végétalisation et visualisez leurs bénéfices pour vos projets de réhabilitation.',
   },
   {
     title: 'Comprendre les orientations stratégiques du Groupe et leurs déclinaisons dans nos métiers',
     desc: "Le projet stratégique du Groupe entre dans une nouvelle phase de maturation. Cet atelier vise à présenter les principales orientations qui concernent le patrimoine et la maîtrise d'ouvrage, à partager les réflexions déjà engagées au sein de nos filières et à identifier les sujets qui devront être accompagnés dans les années à venir.",
+    lieu: 'Le Sucre',
+  },
+  {
+    title: 'Optimisation de la programmation de travaux',
+    desc: 'Un an après le lancement de la démarche : cap sur les résultats, les usages du PANORAMA et les idées qui feront évoluer nos pratiques de programmation de travaux.',
+    lieu: 'Koolab',
+  },
+  {
+    title: 'Réhabiliter autrement : quand la nature devient un levier de performance',
+    desc: 'Testez différents scénarios de végétalisation et visualisez leurs bénéfices pour vos projets de réhabilitation.',
+    lieu: 'Koolab',
   },
 ];
 
@@ -236,6 +240,7 @@ export default function ProgrammePage() {
                   {c.video && <div className={styles.videoTag}>▶ Teaser du spectacle</div>}
                   <h3 className={styles.cardTitle}>{c.title}</h3>
                   <p className={styles.cardDesc}>{c.desc}</p>
+                  <p className={styles.cardLieu}>📍 Lieu : {c.lieu}</p>
                 </div>
               </article>
             ))}
