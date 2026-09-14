@@ -153,8 +153,8 @@ const DIET_OPTIONS = [
 const ATELIER_LIEUX: Record<string, string> = {
   'atelier-piece-toit': 'Le Sucre',
   'atelier-projet-strategique': 'Le Sucre',
-  'atelier-optimisation-travaux': 'Koolab',
-  'atelier-biodiversite': 'Koolab',
+  'atelier-optimisation-travaux': 'Kolaab',
+  'atelier-biodiversite': 'Kolaab',
 };
 
 // Normalise une chaîne pour la recherche (sans accents, minuscules)

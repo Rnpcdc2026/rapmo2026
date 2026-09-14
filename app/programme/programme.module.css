@@ -254,6 +254,22 @@
   margin: 12px 0 0 0;
 }
 
+.mapWrap {
+  max-width: 760px;
+  margin: 18px auto 0;
+  border: 1px solid #ECECEC;
+  border-radius: 14px;
+  padding: 16px;
+  background: #fff;
+}
+
+.mapWrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: 'Inter', sans-serif;
+}
+
 .cardVideo {
   display: block;
   width: 100%;
