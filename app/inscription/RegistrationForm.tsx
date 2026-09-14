@@ -149,6 +149,14 @@ const DIET_OPTIONS = [
   'Sans porc',
 ];
 
+// Lieu de chaque atelier du vendredi matin (par code)
+const ATELIER_LIEUX: Record<string, string> = {
+  'atelier-piece-toit': 'Le Sucre',
+  'atelier-projet-strategique': 'Le Sucre',
+  'atelier-optimisation-travaux': 'Koolab',
+  'atelier-biodiversite': 'Koolab',
+};
+
 // Normalise une chaîne pour la recherche (sans accents, minuscules)
 const normalizeStr = (s: string) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -867,6 +875,9 @@ export default function RegistrationForm({
                                 <div className={styles.visitTitle}>{w.title}</div>
                                 {w.description && <div className={styles.visitDesc}>{w.description}</div>}
                                 {w.speaker && <div className={styles.workshopSpeaker}>{w.speaker}</div>}
+                                {ATELIER_LIEUX[w.code] && (
+                                  <div className={styles.workshopLieu}>📍 Lieu : {ATELIER_LIEUX[w.code]}</div>
+                                )}
                                 {w.code === 'atelier-piece-toit' && (
                                   <a
                                     href="/teaser-spectacle.mp4"

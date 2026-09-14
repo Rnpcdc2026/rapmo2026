@@ -889,6 +889,14 @@
   font-style: italic;
 }
 
+.workshopLieu {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cdc-red);
+  margin-top: 6px;
+}
+
 .teaserLink {
   display: inline-flex;
   align-items: center;
