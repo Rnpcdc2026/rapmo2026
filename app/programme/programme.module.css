@@ -254,6 +254,27 @@
   margin: 12px 0 0 0;
 }
 
+.accessMedia {
+  max-width: 760px;
+  margin: 18px auto 0;
+  text-align: center;
+}
+
+.accessPhoto {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+}
+
+.accessCaption {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  color: #828485;
+  margin: 8px 0 0 0;
+}
+
 .mapWrap {
   max-width: 760px;
   margin: 18px auto 0;

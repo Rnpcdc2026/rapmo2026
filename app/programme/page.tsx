@@ -136,8 +136,7 @@ export default function ProgrammePage() {
             <div className={styles.row}>
               <span className={styles.time}>14h00</span>
               <div>
-                <p className={styles.rowTitle}>Visites de patrimoine — au choix</p>
-                <p className={styles.rowSub}>Voir le détail des quatre visites plus bas.</p>
+                <p className={styles.rowTitle}>Visites de patrimoine (selon inscription)</p>
               </div>
             </div>
             <div className={styles.row}>
@@ -170,10 +169,9 @@ export default function ProgrammePage() {
               <div><p className={styles.rowTitle}>Intervention de Clément Lecuivre</p></div>
             </div>
             <div className={styles.row}>
-              <span className={styles.time}>9h50</span>
+              <span className={styles.time}>10h30</span>
               <div>
-                <p className={styles.rowTitle}>Conférences interactives — au choix</p>
-                <p className={styles.rowSub}>Voir le détail des quatre conférences plus bas.</p>
+                <p className={styles.rowTitle}>Conférences interactives (selon inscription)</p>
               </div>
             </div>
             <div className={styles.row}>
@@ -191,12 +189,7 @@ export default function ProgrammePage() {
             <div className={styles.row}>
               <span className={styles.time}>14h15</span>
               <div>
-                <p className={styles.rowTitle}>Visites de sites culturels et lyonnais — au choix</p>
-                <ul className={styles.rowList}>
-                  <li>Visite du Musée des Confluences</li>
-                  <li>Visite du quartier Saint-Jean</li>
-                  <li>Festival Airt de Famille</li>
-                </ul>
+                <p className={styles.rowTitle}>Visites de sites culturels et lyonnais (selon inscription)</p>
               </div>
             </div>
             <div className={styles.row}>
@@ -255,11 +248,24 @@ export default function ProgrammePage() {
 
         {/* Plan d'orientation — conférences interactives */}
         <section className={styles.day}>
-          <h2 className={styles.blockTitle}>S&apos;orienter — Le Sucre &amp; Kolaab</h2>
+          <h2 className={styles.blockTitle}>Se rendre au Sucre &amp; s&apos;orienter</h2>
           <p className={styles.intro}>
-            Les conférences interactives se tiennent sur deux sites voisins du quai Rambaud,
-            à une minute à pied l&apos;un de l&apos;autre.
+            Le Sucre se situe sur le toit du bâtiment : l&apos;accès se fait directement par le quai
+            Rambaud, en empruntant les grands escaliers extérieurs (indépendamment de La Sucrière).
+            Les conférences interactives se tiennent sur deux sites voisins du quai, à une minute à
+            pied l&apos;un de l&apos;autre.
           </p>
+          <div className={styles.accessMedia}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/sucre-entree.jpg"
+              alt="Entrée du Sucre par les grands escaliers extérieurs, quai Rambaud"
+              className={styles.accessPhoto}
+            />
+            <p className={styles.accessCaption}>
+              Entrée par les quais — grands escaliers extérieurs, accès au rooftop.
+            </p>
+          </div>
           <div className={styles.mapWrap}>
             <svg viewBox="0 0 600 780" role="img" aria-label="Plan d'accès à pied entre Le Sucre et Kolaab, quai Rambaud">
               {/* Terre */}
