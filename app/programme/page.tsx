@@ -193,7 +193,7 @@ export default function ProgrammePage() {
               </div>
             </div>
             <div className={styles.row}>
-              <span className={styles.time}>16h30</span>
+              <span className={styles.time}>16h45</span>
               <div><p className={styles.rowTitle}>Fin des rencontres</p></div>
             </div>
           </div>
