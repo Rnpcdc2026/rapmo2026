@@ -68,12 +68,23 @@ export async function POST(req: NextRequest) {
 
     const { data: event, error: eventError } = await supabase
       .from('events')
-      .select('id')
+      .select('id, registration_deadline')
       .eq('slug', 'rapmo-2026')
       .single();
 
     if (eventError || !event) {
       return NextResponse.json({ error: 'Événement introuvable.' }, { status: 500 });
+    }
+
+    // Clôture réelle des inscriptions : passé la fin du jour de la date limite
+    if (
+      event.registration_deadline &&
+      Date.now() > new Date(event.registration_deadline).getTime() + 24 * 60 * 60 * 1000
+    ) {
+      return NextResponse.json(
+        { error: 'Les inscriptions sont closes.' },
+        { status: 403 }
+      );
     }
 
     const { data: registrationId, error: rpcError } = await supabase.rpc(

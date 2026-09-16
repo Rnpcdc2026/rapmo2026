@@ -28,6 +28,64 @@ export default async function InscriptionPage({
     notFound();
   }
 
+  // Clôture réelle des inscriptions : passé la fin du jour de la date limite
+  const deadline = event.registration_deadline ? new Date(event.registration_deadline) : null;
+  const isClosed = deadline
+    ? Date.now() > deadline.getTime() + 24 * 60 * 60 * 1000
+    : false;
+
+  if (isClosed) {
+    return (
+      <main
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '24px',
+          background: '#fff',
+          fontFamily: 'Inter, sans-serif',
+        }}
+      >
+        <div style={{ maxWidth: 540, textAlign: 'center' }}>
+          <div
+            style={{
+              fontSize: 13,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: '#828485',
+              fontWeight: 600,
+              marginBottom: 12,
+            }}
+          >
+            RAPMO 2026
+          </div>
+          <h1 style={{ fontSize: 28, color: '#E30613', margin: '0 0 12px' }}>
+            Les inscriptions sont closes
+          </h1>
+          <p style={{ fontSize: 16, color: '#4C4C4B', lineHeight: 1.6, margin: '0 0 24px' }}>
+            La période d&apos;inscription aux Rencontres Annuelles Patrimoine et Maîtrise
+            d&apos;Ouvrage 2026 est terminée. Pour toute question, contactez rapmo.lyon@gmail.com.
+          </p>
+          <a
+            href="/programme"
+            style={{
+              display: 'inline-block',
+              background: '#E30613',
+              color: '#fff',
+              textDecoration: 'none',
+              padding: '12px 22px',
+              borderRadius: 8,
+              fontWeight: 600,
+            }}
+          >
+            Voir le programme →
+          </a>
+        </div>
+      </main>
+    );
+  }
+
   const [
     visitsRes,
     workshopsRes,
