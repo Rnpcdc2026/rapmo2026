@@ -13,6 +13,11 @@ export default async function HomePage() {
     .eq('slug', 'rapmo-2026')
     .single();
 
+  const deadline = event?.registration_deadline ? new Date(event.registration_deadline) : null;
+  const isClosed = deadline
+    ? Date.now() > deadline.getTime() + 24 * 60 * 60 * 1000
+    : false;
+
   return (
     <main className={styles.main}>
       <header className={styles.header}>
@@ -34,7 +39,7 @@ export default async function HomePage() {
       <section className={styles.hero}>
         <div className={styles.heroGrid}>
           <div>
-            <div className={styles.eyebrow}>Inscription ouverte</div>
+            <div className={styles.eyebrow}>{isClosed ? 'Inscriptions closes' : 'Inscription ouverte'}</div>
             <h1 className={styles.title}>
               Rencontres Annuelles Patrimoine &amp;{' '}
               <span className={styles.titleAccent}>Maîtrise d&apos;ouvrage 2026</span>
@@ -49,21 +54,25 @@ export default async function HomePage() {
               jours rythmés par des échanges, des conférences interactives et des visites inspirantes
               de patrimoine et de sites culturels lyonnais.
             </p>
-            <Link href="/inscription" className={styles.ctaPrimary}>
-              S'inscrire aux rencontres
+            <Link href={isClosed ? '/programme' : '/inscription'} className={styles.ctaPrimary}>
+              {isClosed ? 'Voir le programme' : 'S\'inscrire aux rencontres'}
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M2 8h12M9 3l5 5-5 5" />
               </svg>
             </Link>
-            {event?.registration_deadline && (
-              <p className={styles.ctaDeadline}>
-                Clôture des inscriptions le{' '}
-                {new Date(event.registration_deadline).toLocaleDateString('fr-FR', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric',
-                })}
-              </p>
+            {isClosed ? (
+              <p className={styles.ctaDeadline}>Les inscriptions sont closes.</p>
+            ) : (
+              event?.registration_deadline && (
+                <p className={styles.ctaDeadline}>
+                  Clôture des inscriptions le{' '}
+                  {new Date(event.registration_deadline).toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </p>
+              )
             )}
           </div>
           <div>
