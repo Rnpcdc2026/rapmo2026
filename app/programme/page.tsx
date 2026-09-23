@@ -123,7 +123,7 @@ export default function ProgrammePage() {
             <div className={styles.row}>
               <span className={styles.time}>11h30</span>
               <div>
-                <p className={styles.rowTitle}>Conférence — Emma Haziza, suivie de vos questions</p>
+                <p className={styles.rowTitle}>Conférence — Emma Haziza</p>
                 <p className={styles.rowSub}>
                   Hydrologue systémicienne, docteure de l&apos;École supérieure des Mines de Paris.
                 </p>

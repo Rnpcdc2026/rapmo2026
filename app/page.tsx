@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import styles from './page.module.css';
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export default async function HomePage() {
   const supabase = createClient();
