@@ -1,12 +1,23 @@
 import Image from 'next/image';
 import styles from './programme.module.css';
 
-const patrimoineVisits = [
+type Consigne = { intro: string; items: string[]; note: string };
+type Visit = {
+  img: string;
+  title: string;
+  desc?: string;
+  credit?: string;
+  access?: string[];
+  consigne?: Consigne;
+};
+
+const patrimoineVisits: Visit[] = [
   {
     img: '/visits/visite-confluence-spl.jpg',
     title: 'Entre Rhône et Saône, le quartier de Confluence — avec la SPL Lyon Confluence',
     desc: "D'ancienne friche industrielle à quartier futuriste et audacieux, le quartier de la Confluence dévoile un nouveau visage de la ville.",
     credit: '',
+    access: ['Bus 133, puis 200 m à pied (SPL Lyon Confluence — 98 rue Delandine, Lyon 2e)'],
   },
   {
     img: '/visits/visite-saint-priest.jpg',
@@ -19,6 +30,10 @@ const patrimoineVisits = [
     title: 'Gratte-ciel Nord – SERL – Villeurbanne',
     desc: "Un projet d'aménagement à la fois prolongement et hommage au centre historique de Villeurbanne, les Gratte-Ciel.",
     credit: '© COGEDIM',
+    access: [
+      'Bus 133, puis Tram T1 ou T2 jusqu’à Perrache',
+      'puis Métro A, arrêt Gratte-Ciel',
+    ],
   },
   {
     img: '/visits/visite-pierre-taille-mariniers.jpg',
@@ -28,10 +43,34 @@ const patrimoineVisits = [
   },
 ];
 
-const culturalVisits = [
-  { img: '/visits/visite-musee-confluences.jpg', title: 'Visite du Musée des Confluences' },
-  { img: '/visits/visite-saint-jean-unesco.jpg', title: 'Visite du quartier Saint-Jean' },
-  { img: '/visits/visite-festival-airt-famille.jpg', title: 'Festival Airt de Famille' },
+const culturalVisits: Visit[] = [
+  {
+    img: '/visits/visite-musee-confluences.jpg',
+    title: 'Visite du Musée des Confluences',
+    access: ['À pied depuis Le Sucre : à droite du Mob Hôtel, passer sous le pont, traverser'],
+  },
+  {
+    img: '/visits/visite-saint-jean-unesco.jpg',
+    title: 'Visite du quartier Saint-Jean',
+    access: [
+      'Bus 133, puis Tram T1 ou T2, arrêt Perrache',
+      'puis Métro A, arrêt Bellecour',
+      'puis Métro D, arrêt Vieux Lyon — Cathédrale Saint-Jean',
+    ],
+    consigne: {
+      intro: 'Deux solutions de consigne sont notamment disponibles à proximité :',
+      items: [
+        'LOCKIN – 38 rue Sala, Lyon 3e (ouvert 7j/7, de 7h à 24h)',
+        'Enseigne affiliée La main des anges (via l’application « Bounce ») – 34 rue Saint-Jean, Lyon 5e (ouvert de 10h à 19h, à partir de 4,50 € par bagage)',
+      ],
+      note: 'La réservation est à effectuer par chaque participant.',
+    },
+  },
+  {
+    img: '/visits/visite-festival-airt-famille.jpg',
+    title: 'Festival Airt de Famille',
+    access: ['Bus 133, puis Tram T1 ou T2, arrêt Place des Archives'],
+  },
 ];
 
 const conferences: { title: string; desc: string; lieu: string; video?: string }[] = [
@@ -213,6 +252,16 @@ export default function ProgrammePage() {
                   <h3 className={styles.cardTitle}>{v.title}</h3>
                   <p className={styles.cardDesc}>{v.desc}</p>
                   {v.credit && <p className={styles.cardCredit}>{v.credit}</p>}
+                  {v.access && v.access.length > 0 && (
+                    <div className={styles.accessInfo}>
+                      <span className={styles.accessLabel}>S&apos;y rendre</span>
+                      <ul className={styles.accessList}>
+                        {v.access.map((a) => (
+                          <li key={a}>{a}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </article>
             ))}
@@ -315,6 +364,28 @@ export default function ProgrammePage() {
                 <img src={v.img} alt={v.title} className={styles.cardImg} />
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitle}>{v.title}</h3>
+                  {v.access && v.access.length > 0 && (
+                    <div className={styles.accessInfo}>
+                      <span className={styles.accessLabel}>S&apos;y rendre</span>
+                      <ul className={styles.accessList}>
+                        {v.access.map((a) => (
+                          <li key={a}>{a}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {v.consigne && (
+                    <div className={styles.consigneInfo}>
+                      <span className={styles.consigneLabel}>Consignes à bagages</span>
+                      <p className={styles.consigneIntro}>{v.consigne.intro}</p>
+                      <ul className={styles.accessList}>
+                        {v.consigne.items.map((it) => (
+                          <li key={it}>{it}</li>
+                        ))}
+                      </ul>
+                      <p className={styles.consigneNote}>{v.consigne.note}</p>
+                    </div>
+                  )}
                 </div>
               </article>
             ))}

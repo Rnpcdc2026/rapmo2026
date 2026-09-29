@@ -246,6 +246,59 @@
   margin: 10px 0 0 0;
 }
 
+.accessInfo {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #ECECEC;
+}
+
+.accessLabel,
+.consigneLabel {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #E30613;
+  margin-bottom: 6px;
+}
+
+.accessList {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.accessList li {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #4C4C4B;
+  line-height: 1.5;
+  margin-bottom: 3px;
+}
+
+.consigneInfo {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #ECECEC;
+}
+
+.consigneIntro {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #4C4C4B;
+  line-height: 1.5;
+  margin: 0 0 6px 0;
+}
+
+.consigneNote {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #828485;
+  margin: 6px 0 0 0;
+}
+
 .cardLieu {
   font-family: 'Inter', sans-serif;
   font-size: 13px;
